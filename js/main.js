@@ -5,7 +5,7 @@ import userMsg from './mainApp/cmps/user-msg.cmp.js';
 new Vue({
     el: '#app',
     router,
-    tempalte: `
+    template: `
         <section class="appsus">
             <header>
                 <app-header></app-header>
