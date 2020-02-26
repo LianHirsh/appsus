@@ -1,0 +1,33 @@
+.closeEmail {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.openEmail {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.from,
+.subject {
+    margin: 0;
+    margin-right: 30px;
+}
+
+.mail-info * {
+    margin-bottom: 10px;
+}
+
+.subject {
+    font-size: 1rem;
+}
+
+.preview-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.preview-buttons button {
+    margin-right: 10px;
+}
