@@ -9,7 +9,8 @@ export const emailService = {
     getEmails,
     getEmailById,
     addEmail,
-    removeEmail
+    removeEmail,
+    changeIsReadStatus
 }
 
 function query() {
@@ -20,6 +21,19 @@ function query() {
     }
     emailsDB = emails;
     return Promise.resolve(emailsDB);
+}
+
+function changeIsReadStatus(emailId) {
+    let email = _findById(emailId);
+    email.isRead = true;
+
+    storageService.store(EMAILS_KEY, emailsDB);
+
+    return Promise.resolve();
+}
+
+function _findById(emailId) {
+    return emailsDB.find(email => email.id === emailId);
 }
 
 function _createEmails() {
@@ -37,15 +51,19 @@ function _createEmail(emailDetails) {
         from: emailDetails.from,
         subject: emailDetails.subject,
         body: emailDetails.body,
+        sentAt: Date.now(),
         isRead: false,
-        sentAt: Date.now()
+        isStar: false,
+        isSentEmail: false,
+        isDraft: false,
+        isSnoozed: false
     }
 }
 
 function addEmail(email) {
     emailsDB.unshift(email);
     storageService.store(EMAILS_KEY, emails);
-    Promise.resolve();
+    return Promise.resolve();
 }
 
 function removeEmail(emailId) {
@@ -61,5 +79,5 @@ function getEmails() {
 
 function getEmailById(emailId) {
     const mail = emailsDB.find(email => email.id === emailId);
-    return mail;
+    return Promise.resolve(mail);;
 }

@@ -17,7 +17,7 @@ export default {
         }
     },
     methods: {
-        removeEmail() {
+        removeEmail(emailId) {
             emailService.removeEmail(emailId);
         }
     },

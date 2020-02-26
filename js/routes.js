@@ -19,10 +19,10 @@ const routes = [
             { path: 'starred', component: emailList },
             { path: 'snoozed', component: emailList },
             { path: 'sentMail', component: emailList },
-            { path: 'drafts', component: emailList }
+            { path: 'drafts', component: emailList },
+            { path: ':id', component: emailDetailes }
         ]
     },
-    { path: '/emailApp/:id', component: emailDetailes }
 ];
 
 export const router = new VueRouter({ routes });
