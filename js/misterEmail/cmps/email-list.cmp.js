@@ -5,12 +5,17 @@ export default {
         <section class="email-list">
             <ul class="list-preview">
                 <li v-for="currEmail in emails">
-                    <email-preview :email="currEmail"></email-preview>
+                    <email-preview :email="currEmail" @removed="removeEmail"></email-preview>
                 </li>
             </ul>
         </section>
     `,
     props: ['emails'],
+    methods: {
+        removeEmail(emailId) {
+            this.$emit('removed', emailId);
+        }
+    },
     components: {
         emailPreview
     }

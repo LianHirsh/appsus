@@ -4,12 +4,17 @@ import emailList from '../cmps/email-list.cmp.js';
 export default {
     template: `
         <section class="email-app">
-            <email-list :emails="emails"></email-list>
+            <email-list :emails="emails" @removed="removeEmail"></email-list>
         </section>
     `,
     data() {
         return {
             emails: []
+        }
+    },
+    methods: {
+        removeEmail(emailId) {
+            emailService.removeEmail(emailId);
         }
     },
     created() {

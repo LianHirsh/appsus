@@ -31,3 +31,15 @@
 .preview-buttons button {
     margin-right: 10px;
 }
+
+.trash-img,
+.extend-img {
+    width: 20px;
+    height: 20px;
+}
+
+.delete-email,
+.open-email {
+    border: none;
+    background: none;
+}

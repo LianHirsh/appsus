@@ -1,4 +1,4 @@
-import longText from '../../mainApp/cmps/long-text.cmp.js'
+import longText from '../../mainApp/cmps/long-text.cmp.js';
 
 export default {
     template: `
@@ -11,10 +11,8 @@ export default {
             </div>
             <div v-else class="openEmail">
                 <div class="preview-buttons">
-                    <button>open</button>
-                    <button>delete</button>
-                    <button>compose</button>
-                    <button>move to notes</button>
+                    <button class="open-email" :to="'/emailApp/'+email.id"><img class="extend-img" src="imgs/extend.png"/></button>
+                    <button class="delete-email" @click="$emit('removed', email.id)"><img class="trash-img" src="imgs/trash.jpg"/></button>
                 </div>
                 <div class="mail-info">
                     <h2 class="from">{{email.from.name}}</h2>

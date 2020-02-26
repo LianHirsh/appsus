@@ -1,4 +1,5 @@
-import { storageService } from '../../mainApp/services/storage.service.js'
+import { storageService } from '../../mainApp/services/storage.service.js';
+import { utilService } from '../../mainApp/services/util.service.js';
 
 const EMAILS_KEY = 'emails';
 var emailsDB = [];
@@ -13,7 +14,7 @@ export const emailService = {
 
 function query() {
     var emails = storageService.load(EMAILS_KEY);
-    if (!emails) {
+    if (!emails || emails.length === 0) {
         emails = _createEmails();
         storageService.store(EMAILS_KEY, emails);
     }
@@ -32,6 +33,7 @@ function _createEmails() {
 
 function _createEmail(emailDetails) {
     return {
+        id: utilService.makeId(),
         from: emailDetails.from,
         subject: emailDetails.subject,
         body: emailDetails.body,
