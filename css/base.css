@@ -10,6 +10,7 @@
 @import './misterEmail/cmps/email.compose.css';
 @import './misterEmail/pages/email-app.css';
 @import './misterEmail/pages/email-details.css';
+@import './mainApp/long-text.css';
 * {
     box-sizing: border-box;
 }
