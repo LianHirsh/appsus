@@ -1,3 +1,4 @@
+import { emailService } from '../services/email.service.js';
 import emailPreview from '../cmps/email-preview.cmp.js';
 
 export default {
@@ -10,11 +11,21 @@ export default {
             </ul>
         </section>
     `,
-    props: ['emails'],
-    methods: {
-        removeEmail(emailId) {
-            this.$emit('removed', emailId);
+    data() {
+        return {
+            emails: []
         }
+    },
+    methods: {
+        removeEmail() {
+            emailService.removeEmail(emailId);
+        }
+    },
+    created() {
+        emailService.query()
+            .then(emails => {
+                this.emails = emails;
+            })
     },
     components: {
         emailPreview
