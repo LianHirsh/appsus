@@ -40,3 +40,7 @@ body {
 .align-center {
     align-items: center;
 }
+
+.column {
+    flex-direction: column;
+}
