@@ -1,0 +1,19 @@
+@import './missKeep/cmps/note-img.css';
+@import './missKeep/cmps/note-todos.css';
+@import './missKeep/cmps/note-txt.css';
+@import './missKeep/cmps/note-video.css';
+@import './missKeep/pages/note-app.css';
+@import './misterEmail/cmps/email-filter.css';
+@import './misterEmail/cmps/email-list.css';
+@import './misterEmail/cmps/email-preview.css';
+@import './misterEmail/cmps/email-status.css';
+@import './misterEmail/cmps/email.compose.css';
+@import './misterEmail/pages/email-app.css';
+@import './misterEmail/pages/email-details.css';
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}

@@ -1,0 +1,1 @@
+export const evenBus = new Vue();
