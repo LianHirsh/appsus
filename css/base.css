@@ -11,10 +11,32 @@
 @import './misterEmail/pages/email-app.css';
 @import './misterEmail/pages/email-details.css';
 @import './mainApp/long-text.css';
+@import './mainApp/app-header.css';
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
+}
+
+/* layout */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* helpers */
+
+.flex {
+    display: flex;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
 }
