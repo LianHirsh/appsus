@@ -1,5 +1,5 @@
 export default {
-    tamplate: `
+    template: `
         <div class="app-header">
             <router-link to="/" exact>
                 Home
