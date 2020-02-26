@@ -1,0 +1,28 @@
+textarea[name=body] {
+    resize: none;
+}
+
+.form-msg {
+    width: 500px
+}
+
+.form-msg input {
+    padding: 5px;
+    outline-width: 0;
+}
+
+.form-msg textarea {
+    height: 200px;
+    outline-width: 0;
+}
+
+form-msg* {
+    width: 200px;
+    padding: 40px;
+}
+
+.form-title {
+    background-color: black;
+    color: white;
+    padding: 10px;
+}

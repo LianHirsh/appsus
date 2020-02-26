@@ -10,6 +10,7 @@
 @import './misterEmail/cmps/email.compose.css';
 @import './misterEmail/pages/email-app.css';
 @import './misterEmail/pages/email-details.css';
+@import './misterEmail/pages/email-compose.css';
 @import './mainApp/long-text.css';
 @import './mainApp/app-header.css';
 * {
@@ -43,4 +44,8 @@ body {
 
 .column {
     flex-direction: column;
+}
+
+.justify-center {
+    justify-content: center;
 }
