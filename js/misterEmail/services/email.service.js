@@ -10,7 +10,11 @@ export const emailService = {
     getEmailById,
     addEmail,
     removeEmail,
-    changeIsReadStatus
+    changeIsReadStatus,
+    changeStare,
+    changeSnoozedStatus,
+    changeSentStatus,
+    changeDraftStatus
 }
 
 function query() {
@@ -30,6 +34,64 @@ function changeIsReadStatus(emailId) {
     storageService.store(EMAILS_KEY, emailsDB);
 
     return Promise.resolve();
+}
+
+function changeStare(emailId) {
+    let email = _findById(emailId);
+    email.isStar = !email.isStar;
+
+    storageService.store(EMAILS_KEY, emailsDB);
+
+    return Promise.resolve();
+}
+
+function changeSnoozedStatus(emailId) {
+    let email = _findById(emailId);
+    email.isSnoozed = !email.isSnoozed;
+
+    storageService.store(EMAILS_KEY, emailsDB);
+
+    return Promise.resolve();
+}
+
+function changeDraftStatus() {
+    let email = _findById(emailId);
+    email.isDraft = !email.isDraft;
+
+    storageService.store(EMAILS_KEY, emailsDB);
+
+    return Promise.resolve();
+}
+
+function changeSentStatus() {
+    let email = _findById(emailId);
+    email.isSentEmail = true;
+
+    storageService.store(EMAILS_KEY, emailsDB);
+
+    return Promise.resolve();
+}
+
+function addEmail(email) {
+    emailsDB.unshift(email);
+    storageService.store(EMAILS_KEY, emails);
+    return Promise.resolve();
+}
+
+function removeEmail(emailId) {
+    const mailIdx = emailsDB.findIndex(email => email.id === emailId);
+    emailsDB.splice(mailIdx, 1);
+    storageService.store(EMAILS_KEY, emailsDB);
+    return Promise.resolve();
+}
+
+function getEmails() {
+    return Promise.resolve(emailsDB);
+}
+
+function getEmailById(emailId) {
+    const mail = emailsDB.find(email => email.id === emailId);
+    return Promise.resolve(mail);
 }
 
 function _findById(emailId) {
@@ -58,26 +120,4 @@ function _createEmail(emailDetails) {
         isDraft: false,
         isSnoozed: false
     }
-}
-
-function addEmail(email) {
-    emailsDB.unshift(email);
-    storageService.store(EMAILS_KEY, emails);
-    return Promise.resolve();
-}
-
-function removeEmail(emailId) {
-    const mailIdx = emailsDB.findIndex(email => email.id === emailId);
-    emailsDB.splice(mailIdx, 1);
-    storageService.store(EMAILS_KEY, emailsDB);
-    return Promise.resolve();
-}
-
-function getEmails() {
-    return Promise.resolve(emailsDB);
-}
-
-function getEmailById(emailId) {
-    const mail = emailsDB.find(email => email.id === emailId);
-    return Promise.resolve(mail);;
 }

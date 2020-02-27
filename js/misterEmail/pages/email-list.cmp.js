@@ -6,7 +6,7 @@ export default {
         <section class="email-list">
             <ul class="list-preview">
                 <li v-for="currEmail in emails">
-                    <email-preview :email="currEmail" @removed="removeEmail"></email-preview>
+                    <email-preview :email="currEmail" @removed="removeEmail" @stared="changeStar"></email-preview>
                 </li>
             </ul>
         </section>
@@ -19,6 +19,9 @@ export default {
     methods: {
         removeEmail(emailId) {
             emailService.removeEmail(emailId);
+        },
+        changeStar(emailId) {
+            emailService.changeStare(emailId);
         }
     },
     created() {

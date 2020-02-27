@@ -28,10 +28,6 @@
     align-items: center;
 }
 
-.preview-buttons button {
-    margin-right: 10px;
-}
-
 .trash-img,
 .extend-img {
     width: 20px;
@@ -39,9 +35,13 @@
 }
 
 .delete-email,
-.open-email {
+.open-email,
+.star-email {
     border: none;
     background: none;
+    margin: 0;
+    padding: 0;
+    outline-width: 0;
 }
 
 .read {
@@ -50,4 +50,12 @@
 
 .notRead {
     font-weight: bold;
+}
+
+.white-star {
+    font-size: 2rem;
+}
+
+.yellow-star {
+    font-size: 1.2rem;
 }

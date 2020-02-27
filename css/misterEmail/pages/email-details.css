@@ -1,0 +1,16 @@
+.clock-img,
+.paper-img,
+.sent-img {
+    width: 20px;
+    height: 20px;
+}
+
+.snoozed-email,
+.draft-email,
+.sent-email {
+    border: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+    outline-width: 0;
+}

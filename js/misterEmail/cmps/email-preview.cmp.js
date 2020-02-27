@@ -4,6 +4,7 @@ export default {
     template: `
         <section class="email-preview" @click="changeEmailStatus" :class="readState">
             <div v-if="isCloseState" class="closeEmail">
+            <button class="star-email" @click.stop="$emit('stared', email.id)" :class="starClass">{{star}}</button>
                 <h2 class="from">{{email.from.name}}</h2>
                 <h3 class="subject">{{email.subject}}</h3>
                 <long-text :txt="email.body" :isCloseState="isCloseState"></long-text>
@@ -13,6 +14,7 @@ export default {
                 <div class="preview-buttons">
                     <router-link class="open-email" :to="'/emailApp/'+email.id"><img class="extend-img" src="imgs/extend.png"/></router-link>
                     <button class="delete-email" @click="$emit('removed', email.id)"><img class="trash-img" src="imgs/trash.jpg"/></button>
+                    <button class="star-email" @click.stop="$emit('stared', email.id)" :class="starClass">{{star}}</button>
                 </div>
                 <div class="mail-info">
                     <h2 class="from">{{email.from.name}}</h2>
@@ -44,6 +46,20 @@ export default {
                 return 'read';
             } else {
                 return 'notRead';
+            }
+        },
+        star() {
+            if (this.email.isStar) {
+                return '⭐';
+            } else {
+                return '✰';
+            }
+        },
+        starClass() {
+            if (this.email.isStar) {
+                return 'yellow-star';
+            } else {
+                return 'white-star';
             }
         }
     },
