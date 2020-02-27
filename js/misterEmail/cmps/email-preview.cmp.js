@@ -4,7 +4,12 @@ export default {
     template: `
         <section class="email-preview" @click="changeEmailStatus" :class="readState" v-if="email">
             <div v-if="isCloseState" class="closeEmail">
-            <button class="star-email" @click.stop="$emit('stared', email.id)" :class="starClass">{{star}}</button>
+                <button class="star-email" @click.stop="$emit('stared', email.id)" 
+                :class="starClass">{{star}}
+                </button>
+                <button class="read-email" @click.stop="$emit('read', email.id)">
+                    <img class="read-img" src="imgs/read.png"/>
+                </button>
                 <h2 class="from">{{email.from.name}}</h2>
                 <h3 class="subject">{{email.subject}}</h3>
                 <long-text :txt="email.body" :isCloseState="isCloseState"></long-text>
@@ -20,9 +25,6 @@ export default {
                     </button>
                     <button class="star-email" @click.stop="$emit('stared', email.id)" 
                     :class="starClass">{{star}}</button>
-                    <button class="read-email" @click.stop="$emit('read', email.id)">
-                        <img class="read-img" src="imgs/read.png"/>
-                    </button>
                 </div>
                 <div class="mail-info">
                     <h2 class="from">{{email.from.name}}</h2>
@@ -74,6 +76,9 @@ export default {
     methods: {
         changeEmailStatus() {
             this.isCloseState = !this.isCloseState;
+            if (!this.email.isRead && !this.isCloseState) {
+                this.$emit('read-open', this.email.id)
+            }
         },
         padTime(time) {
             return (time < 10) ? '0' + time : time;

@@ -13,6 +13,7 @@
 @import './misterEmail/pages/email-compose.css';
 @import './mainApp/long-text.css';
 @import './mainApp/app-header.css';
+@import './misterEmail/cmps/email-sort.css';
 * {
     box-sizing: border-box;
 }
@@ -21,12 +22,14 @@ body {
     margin: 0;
 }
 
+
 /* layout */
 
 .container {
     max-width: 1200px;
     margin: auto;
 }
+
 
 /* helpers */
 

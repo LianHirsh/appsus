@@ -1,6 +1,6 @@
 .email-app {
     display: grid;
-    grid-template-columns: 20vw auto;
+    grid-template-columns: 20vw 20vw auto;
     grid-template-rows: 5vw auto;
     height: 100vh;
 }
@@ -16,6 +16,11 @@
 }
 
 .filter {
-    grid-column: 2/-1;
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+.sort {
+    grid-column: 3/4;
     grid-row: 1/2;
 }

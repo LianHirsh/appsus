@@ -32,13 +32,12 @@ export default {
             emailService.getEmailById(emailId)
                 .then(email => {
                     this.email = email;
-                    emailService.changeIsReadStatus(emailId, true);
                 });
         },
         removeEmail() {
             emailService.removeEmail(this.email.id);
-            this.$router.push('/emailApp/inbox');
             this.email = null;
+            this.$router.push('/emailApp/emailList/inbox');
         },
         changeSnoozedStatus() {
             emailService.changeSnoozedStatus(this.email.id);
