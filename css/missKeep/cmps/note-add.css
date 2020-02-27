@@ -8,19 +8,26 @@
 
 .note-add input {
     padding: 0.5em 1em;
+    padding-top: 1.2rem;
     line-height: 1.5em;
     border-color: transparent;
     outline: none;
     width: 100%;
     max-width: 100%;
+    font-size: 1rem;
 }
 
 .icons span {
     padding: 0.5em 0.5em;
     color: #ccc;
     cursor: pointer;
+    margin: auto 5px;
 }
 
-span.selected {
+input[type="radio"] {
+    visibility: hidden;
+}
+
+:checked+span {
     color: black;
 }

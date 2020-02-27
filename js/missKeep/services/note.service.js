@@ -4,9 +4,9 @@ import { utilService } from '../../mainApp/services/util.service.js';
 const NOTES_KEY = 'notes';
 var notesDB = [];
 
-export const notesService = {
+export const noteService = {
     query,
-    getnotebyid,
+    getNotebyid,
     getNotes,
     removeNote,
     addNote,
@@ -47,7 +47,7 @@ function removeNote(noteId) {
     return Promise.resolve();
 }
 
-function getnotebyid(noteId) {
+function getNotebyid(noteId) {
     const note = notesDB.find(note => note.id === noteId);
 
     return Promise.resolve(note);
@@ -71,18 +71,18 @@ function _findNote(noteId) {
 
 function _createNotes() {
     let notes = [{
-            type: 'NoteText',
+            type: 'noteText',
             info: {
-                txt: "Fullstack Me Baby!"
+                text: 'Fullstack Me Baby!'
             },
             style: {
                 backgroundColor: '#a2b9bc'
             }
         },
         {
-            type: 'NoteImg',
+            type: 'noteImg',
             info: {
-                url: "http://some-img/me",
+                url: 'https://specials-images.forbesimg.com/imageserve/5db4c7b464b49a0007e9dfac/960x0.jpg?fit=scale',
                 title: "Me playing Mi"
             },
             style: {
@@ -90,20 +90,20 @@ function _createNotes() {
             }
         },
         {
-            type: 'NoteTodos',
+            type: 'noteTodos',
             info: {
-                label: "How was it:",
-                todos: [{ txt: "Do that", doneAt: null }, { txt: "Do this", doneAt: 187111111 }]
+                label: 'How was it:',
+                todos: [{ text: 'Do that', doneAt: null }, { text: 'Do this', doneAt: 187111111 }]
             },
             style: {
                 backgroundColor: '#a2b9bc'
             }
         },
         {
-            type: 'NoteVideo',
+            type: 'noteVideo',
             info: {
-                url: "http://some-img/me",
-                title: "My video"
+                urlYouTubeId: 'tgbNymZ7vqY',
+                title: 'My video'
             },
             style: {
                 backgroundColor: '#a2b9bc'
