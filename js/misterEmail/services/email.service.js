@@ -3,6 +3,7 @@ import { utilService } from '../../mainApp/services/util.service.js';
 
 const EMAILS_KEY = 'emails';
 var emailsDB = [];
+var from = {name: 'Israel', address: 'israel@gmail.com'}
 
 export const emailService = {
     query,
@@ -38,8 +39,8 @@ function _findById(emailId) {
 
 function _createEmails() {
     let emails = [
-        { from: { name: 'Ella', address: 'ella@gmail.com' }, subject: 'Wassap?', body: 'lorem Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book.' },
-        { from: { name: 'Lian', address: 'lian@gmail.com' }, subject: 'Wassap?', body: 'Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book.' }
+        { from:{name: 'Ella', address: 'ella@gmail.com'}, cc:'ella@gmail.com', subject: 'Wassap?', body: 'lorem Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book.' },
+        { from:{name: 'Lian', address: 'lian@gmail.com'}, cc:'ella@gmail.com', subject: 'Wassap?', body: 'Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book.' }
     ].map(_createEmail)
 
     return emails
@@ -48,7 +49,8 @@ function _createEmails() {
 function _createEmail(emailDetails) {
     return {
         id: utilService.makeId(),
-        from: emailDetails.from,
+        from: (emailDetails.from) ? emailDetails.from : from,
+        cc: emailDetails.cc,
         subject: emailDetails.subject,
         body: emailDetails.body,
         sentAt: Date.now(),
@@ -61,8 +63,9 @@ function _createEmail(emailDetails) {
 }
 
 function addEmail(email) {
-    emailsDB.unshift(email);
-    storageService.store(EMAILS_KEY, emails);
+    const emailObj = _createEmail(email);
+    emailsDB.unshift(emailObj);
+    storageService.store(EMAILS_KEY, emailsDB);
     return Promise.resolve();
 }
 
