@@ -15,11 +15,7 @@ const routes = [
         component: emailApp,
         children: [
             { path: 'compose', component: emailCompose },
-            { path: 'inbox', component: emailList },
-            { path: 'starred', component: emailList },
-            { path: 'snoozed', component: emailList },
-            { path: 'sentMail', component: emailList },
-            { path: 'drafts', component: emailList },
+            { path: 'emailList/:type', component: emailList },
             { path: ':id', component: emailDetailes }
         ]
     },

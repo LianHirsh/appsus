@@ -5,19 +5,19 @@ export default {
             <router-link to="/emailApp/compose" exact>
                 Compose
             </router-link>
-            <router-link to="/emailApp/inbox" exact>
+            <router-link to="/emailApp/emailList/inbox" exact>
                 Inbox
             </router-link>
-            <router-link to="/emailApp/starred" exact>
+            <router-link to="/emailApp/emailList/starred" exact>
                 Starred
             </router-link>
-            <router-link to="/emailApp/snoozed" exact>
+            <router-link to="/emailApp/emailList/snoozed" exact>
                 Snoozed
             </router-link>
-            <router-link to="/emailApp/sentMail" exact>
+            <router-link to="/emailApp/emailList/sentMail" exact>
                 Sent Mail
             </router-link>
-            <router-link to="/emailApp/drafts" exact>
+            <router-link to="/emailApp/emailList/drafts" exact>
                 Drafts
             </router-link>
         </nav>
