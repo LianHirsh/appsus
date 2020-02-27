@@ -23,6 +23,7 @@ export default {
         },
         changeStar(emailId) {
             emailService.changeStare(emailId);
+            this.getEmails();
         },
         getEmails() {
             emailService.query(this.listType)

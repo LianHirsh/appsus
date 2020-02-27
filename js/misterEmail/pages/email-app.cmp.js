@@ -1,9 +1,11 @@
 import emailNavbar from '../cmps/email-navbar.cmp.js';
+import FilterEmails from '../cmps/email-filter.cmp.js'
 
 export default {
     template: `
         <section class="email-app container">
             <email-navbar class="sidebar"></email-navbar>
+            <filter-emails class="filter"></filter-emails>
             <router-view class="main" :listType="listType"></router-view>
         </section>
     `,
@@ -21,6 +23,7 @@ export default {
         this.listType = this.$route.params.type;
     },
     components: {
-        emailNavbar
+        emailNavbar,
+        FilterEmails
     }
 }
