@@ -7,11 +7,11 @@ export default {
             <div class="form-title">New Message</div>
 
             <form class="flex column" @submit.prevent="addEmail">
-                <input type="email" name="cc" placeholder="To:" v-model="email.to"/>
+                <input type="email" name="to" placeholder="To:""/>
 
-                <input type="email" name="bcc" placeholder="Cc:" v-model="email.cc" />
+                <input type="email" name="cc" placeholder="Cc:" v-model="email.cc" />
 
-                <input type="email" name="to" placeholder="Bcc:" v-model="email.bcc" />
+                <input type="email" name="bcc" placeholder="Bcc:" />
 
                 <input type="text" name="subject" placeholder="Subject:" v-model="email.subject" />
 
@@ -31,7 +31,7 @@ export default {
     },
     methods: {
         addEmail() {
-            emailService.addEmail(this.mail)
+            emailService.addEmail(this.email)
                 .then(() => {
                     this.$router.push('/emailApp')
                 })
