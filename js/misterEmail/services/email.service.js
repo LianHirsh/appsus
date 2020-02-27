@@ -70,9 +70,13 @@ function changeStare(emailId) {
 function changeSnoozedStatus(emailId) {
     let email = _findById(emailId);
     email.isSnoozed = !email.isSnoozed;
+
+    storageService.store(EMAILS_KEY, emailsDB);
+
+    return Promise.resolve();
 }
 
-function changeDraftStatus() {
+function changeDraftStatus(emailId) {
     let email = _findById(emailId);
     email.isDraft = !email.isDraft;
 
