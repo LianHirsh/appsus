@@ -4,9 +4,9 @@ import { utilService } from '../../mainApp/services/util.service.js';
 const NOTES_KEY = 'notes';
 var notesDB = [];
 
-export const notesService = {
+export const noteService = {
     query,
-    getnotebyid,
+    getNotebyid,
     getNotes,
     removeNote,
     addNote,
@@ -47,7 +47,7 @@ function removeNote(noteId) {
     return Promise.resolve();
 }
 
-function getnotebyid(noteId) {
+function getNotebyid(noteId) {
     const note = notesDB.find(note => note.id === noteId);
 
     return Promise.resolve(note);
@@ -71,7 +71,7 @@ function _findNote(noteId) {
 
 function _createNotes() {
     let notes = [{
-            type: 'NoteText',
+            type: 'noteText',
             info: {
                 txt: "Fullstack Me Baby!"
             },
@@ -80,7 +80,7 @@ function _createNotes() {
             }
         },
         {
-            type: 'NoteImg',
+            type: 'noteImg',
             info: {
                 url: "http://some-img/me",
                 title: "Me playing Mi"
@@ -90,7 +90,7 @@ function _createNotes() {
             }
         },
         {
-            type: 'NoteTodos',
+            type: 'noteTodos',
             info: {
                 label: "How was it:",
                 todos: [{ txt: "Do that", doneAt: null }, { txt: "Do this", doneAt: 187111111 }]
@@ -100,7 +100,7 @@ function _createNotes() {
             }
         },
         {
-            type: 'NoteVideo',
+            type: 'noteVideo',
             info: {
                 url: "http://some-img/me",
                 title: "My video"

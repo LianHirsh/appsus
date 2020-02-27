@@ -3,8 +3,8 @@ export default {
         <section class="note-todos">
             <div class="note-todos-content"> 
                 <div class="todos">
-                    <h3>{{todos.info.label}}</h3>
-                    <div class="todo" v-for="todo in todos.info.todos">{{todo}}</div>
+                    <h3>{{info.label}}</h3>
+                    <div class="todo" v-for="todo in info.todos">{{todo}}</div>
                 </div>
             </div>
             <div class="flex">

@@ -9,7 +9,7 @@ export default {
 
         <div class="icons flex">
             <label>
-                <input type="radio" v-model="type" value="text"  />  
+                <input type="radio" v-model="type" value="text" checked="true" />  
                 <span class="fas fa-font fa-lg selected"></span>
             </label>
             

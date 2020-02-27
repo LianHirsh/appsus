@@ -1,8 +1,8 @@
 export default {
     template: `
-        <section class="note-txt">
-            <div class="note-txt-content">
-                <p>{{text}}</p>
+        <section class="note-text">
+            <div class="note-text-content">
+                <p>{{info.text}}</p>
             </div>
             <div class="flex">
                 <span class="fas fa-font visible"></span>
@@ -10,5 +10,5 @@ export default {
             </div>
         </section>
     `,
-    props: ['text']
+    props: ['info']
 }

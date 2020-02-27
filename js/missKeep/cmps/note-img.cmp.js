@@ -2,7 +2,7 @@ export default {
     template: `
         <section class="note-img">
             <div class="note-img-content"> 
-                <img :src="img.info.url" title="img.info.title"/>
+                <img :src="info.url" title="info.title"/>
             </div>
             <div class="flex">
                 <div class="toolbar"><div>
@@ -10,5 +10,5 @@ export default {
             </div>
         </section>
     `,
-    props: ['img']
+    props: ['info']
 }
