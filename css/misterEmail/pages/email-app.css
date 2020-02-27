@@ -1,0 +1,13 @@
+.email-app {
+    display: grid;
+    grid-template-columns: 30vw auto;
+}
+
+.sidebar {
+    position: fixed;
+    grid-column: 1/2;
+}
+
+.main {
+    grid-column-start: 2;
+}
