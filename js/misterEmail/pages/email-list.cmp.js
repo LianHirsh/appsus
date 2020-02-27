@@ -4,13 +4,14 @@ import emailPreview from '../cmps/email-preview.cmp.js';
 export default {
     template: `
         <section class="email-list">
-            <ul class="list-preview">
+            <ul class="list-preview" v-if="emails">
                 <li v-for="currEmail in emails">
                     <email-preview :email="currEmail" @removed="removeEmail" @stared="changeStar"></email-preview>
                 </li>
             </ul>
         </section>
     `,
+    props: ['listType'],
     data() {
         return {
             emails: []
@@ -22,13 +23,21 @@ export default {
         },
         changeStar(emailId) {
             emailService.changeStare(emailId);
+        },
+        getEmails() {
+            emailService.query(this.listType)
+                .then(emails => {
+                    this.emails = emails;
+                });
+        }
+    },
+    watch: {
+        'listType' () {
+            this.getEmails();
         }
     },
     created() {
-        emailService.query()
-            .then(emails => {
-                this.emails = emails;
-            })
+        this.getEmails();
     },
     components: {
         emailPreview

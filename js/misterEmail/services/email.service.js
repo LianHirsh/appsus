@@ -18,14 +18,35 @@ export const emailService = {
     changeDraftStatus
 }
 
-function query() {
+function query(emailType) {
     var emails = storageService.load(EMAILS_KEY);
     if (!emails || emails.length === 0) {
         emails = _createEmails();
         storageService.store(EMAILS_KEY, emails);
     }
     emailsDB = emails;
-    return Promise.resolve(emailsDB);
+
+    let sortedEmails = filterEmails(emailType);
+
+    return Promise.resolve(sortedEmails);
+}
+
+function filterEmails(emailType) {
+    const sortedEmails = emailsDB.filter(email => {
+        if (emailType === 'starred' && email.isStar) {
+            return email;
+        } else if (emailType === 'snoozed' && email.isSnoozed) {
+            return email;
+        } else if (emailType === 'sentMail' && email.isSentEmail) {
+            return email;
+        } else if (emailType === 'drafts' && email.isDraft) {
+            return email;
+        } else if (emailType === 'inbox' && !email.isDraft && !email.isSentEmail) {
+            return email;
+        }
+    });
+
+    return sortedEmails;
 }
 
 function changeIsReadStatus(emailId) {

@@ -2,7 +2,7 @@ import longText from '../../mainApp/cmps/long-text.cmp.js';
 
 export default {
     template: `
-        <section class="email-preview" @click="changeEmailStatus" :class="readState">
+        <section class="email-preview" @click="changeEmailStatus" :class="readState" v-if="email">
             <div v-if="isCloseState" class="closeEmail">
             <button class="star-email" @click.stop="$emit('stared', email.id)" :class="starClass">{{star}}</button>
                 <h2 class="from">{{email.from.name}}</h2>

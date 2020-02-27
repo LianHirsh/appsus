@@ -33,7 +33,8 @@ export default {
         addEmail() {
             emailService.addEmail(this.email)
                 .then(() => {
-                    this.$router.push('/emailApp')
+                    emailService.changeSentStatus(this.email.id);
+                    this.$router.push('/emailApp/sentMail');
                 })
         },
     }
