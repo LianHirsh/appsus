@@ -7,7 +7,6 @@
 @import './misterEmail/cmps/email-list.css';
 @import './misterEmail/cmps/email-preview.css';
 @import './misterEmail/cmps/email-status.css';
-@import './misterEmail/cmps/email.compose.css';
 @import './misterEmail/pages/email-app.css';
 @import './misterEmail/pages/email-details.css';
 @import './misterEmail/pages/email-compose.css';
@@ -21,12 +20,14 @@ body {
     margin: 0;
 }
 
+
 /* layout */
 
 .container {
     max-width: 1200px;
     margin: auto;
 }
+
 
 /* helpers */
 
