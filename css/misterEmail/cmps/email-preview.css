@@ -29,14 +29,16 @@
 }
 
 .trash-img,
-.extend-img {
+.extend-img,
+.read-img {
     width: 20px;
     height: 20px;
 }
 
 .delete-email,
 .open-email,
-.star-email {
+.star-email,
+.read-email {
     border: none;
     background: none;
     margin: 0;
