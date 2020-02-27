@@ -85,8 +85,10 @@ function changeDraftStatus(emailId) {
     return Promise.resolve();
 }
 
-function changeSentStatus() {
+function changeSentStatus(emailId) {
+    console.log(emailId)
     let email = _findById(emailId);
+    console.log(email)
     email.isSentEmail = true;
 
     storageService.store(EMAILS_KEY, emailsDB);
@@ -98,7 +100,7 @@ function addEmail(email) {
     const emailObj = _createEmail(email);
     emailsDB.unshift(emailObj);
     storageService.store(EMAILS_KEY, emailsDB);
-    return Promise.resolve();
+    return Promise.resolve(emailObj);
 }
 
 function removeEmail(emailId) {
