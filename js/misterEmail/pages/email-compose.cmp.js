@@ -19,9 +19,9 @@ export default {
 
                 <button class="send">Send</button>
             </form>
-
-            <button class="reset"><img class="reset-img" src="./imgs/trash.jpg"></button>
         </div>
+            <button class="remove" @click="removeEmail"><img class="remove-img" src="./imgs/trash.jpg"></button>
+    
     </section>
     `,
     data() {
@@ -32,10 +32,17 @@ export default {
     methods: {
         addEmail() {
             emailService.addEmail(this.email)
-                .then(() => {
-                    emailService.changeSentStatus(this.email.id);
-                    this.$router.push('/emailApp/sentMail');
+                .then((res) => {
+                    console.log(res.id)
+                    emailService.changeSentStatus(res.id);
+                    this.$router.push('/emailApp/emailList/sentMail');
                 })
         },
+        removeEmail() {
+            this.$router.push('emailList/inbox')
+        }
+    },
+    created() {
+
     }
 }

@@ -2,6 +2,7 @@
 @import './missKeep/cmps/note-todos.css';
 @import './missKeep/cmps/note-txt.css';
 @import './missKeep/cmps/note-video.css';
+@import './missKeep/cmps/note-add.css';
 @import './missKeep/pages/note-app.css';
 @import './misterEmail/cmps/email-filter.css';
 @import './misterEmail/cmps/email-list.css';
@@ -20,14 +21,12 @@ body {
     margin: 0;
 }
 
-
 /* layout */
 
 .container {
     max-width: 1200px;
     margin: auto;
 }
-
 
 /* helpers */
 

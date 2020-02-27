@@ -14,7 +14,7 @@ textarea[name=body] {
 
 .form-msg * {
     width: 200px;
-    padding: 40px;
+    width: 800px;
 }
 
 .form-title {
@@ -24,9 +24,7 @@ textarea[name=body] {
 }
 
 .send {
-    background-color: #008CBA;
     color: white;
-    border: 2px solid #008CBA;
     cursor: pointer;
     align-self: flex-start;
     height: 40px;
@@ -38,17 +36,17 @@ textarea[name=body] {
     font-size: 14px;
 }
 
-.reset-img {
+.remove-img {
     width: 30px;
     height: 30px;
 }
 
-.reset {
+.remove {
     background-color: transparent;
     border: none;
-    align-self: flex-end;
+    align-self: flex-start;
     position: relative;
+    left: 750px;
     bottom: 77px;
-    padding-right: 15px;
     cursor: pointer;
 }

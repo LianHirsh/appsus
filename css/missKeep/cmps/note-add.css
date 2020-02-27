@@ -1,0 +1,26 @@
+.note-add {
+    padding: 10px 0;
+    width: 600px;
+    margin: 0 auto 2em;
+    max-width: 100%;
+    background-color: white;
+}
+
+.note-add input {
+    padding: 0.5em 1em;
+    line-height: 1.5em;
+    border-color: transparent;
+    outline: none;
+    width: 100%;
+    max-width: 100%;
+}
+
+.icons span {
+    padding: 0.5em 0.5em;
+    color: #ccc;
+    cursor: pointer;
+}
+
+span.selected {
+    color: black;
+}
