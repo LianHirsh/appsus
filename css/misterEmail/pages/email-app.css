@@ -1,6 +1,7 @@
 .email-app {
     display: grid;
-    grid-template-columns: 30vw auto;
+    grid-template-columns: 20vw auto;
+    padding: 5px 20px;
 }
 
 .sidebar {

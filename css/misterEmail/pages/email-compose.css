@@ -2,10 +2,6 @@ textarea[name=body] {
     resize: none;
 }
 
-.form-msg {
-    width: 500px
-}
-
 .form-msg input {
     padding: 5px;
     outline-width: 0;
@@ -25,4 +21,34 @@ form-msg* {
     background-color: black;
     color: white;
     padding: 10px;
+}
+
+.send {
+    background-color: #008CBA;
+    color: white;
+    border: 2px solid #008CBA;
+    cursor: pointer;
+    align-self: flex-start;
+    height: 40px;
+    width: 90px;
+    border-radius: 0.2rem;
+    position: relative;
+    bottom: 45px;
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+.reset-img {
+    width: 30px;
+    height: 30px;
+}
+
+.reset {
+    background-color: transparent;
+    border: none;
+    align-self: flex-end;
+    position: relative;
+    bottom: 77px;
+    padding-right: 15px;
+    cursor: pointer;
 }

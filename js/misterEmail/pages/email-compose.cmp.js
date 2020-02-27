@@ -7,20 +7,20 @@ export default {
             <div class="form-title">New Message</div>
 
             <form class="flex column" @submit.prevent="addEmail">
-                <input type="email" name="to" placeholder="To:""/>
+                <input type="email"  placeholder="To:"/>
 
-                <input type="email" name="cc" placeholder="Cc:" v-model="email.cc" />
+                <input type="email"  placeholder="Cc:" v-model="email.cc" />
 
-                <input type="email" name="bcc" placeholder="Bcc:" />
+                <input type="email"  placeholder="Bcc:" />
 
-                <input type="text" name="subject" placeholder="Subject:" v-model="email.subject" />
+                <input type="text"  placeholder="Subject:" v-model="email.subject" />
 
                 <textarea name="body" v-model="email.body"></textarea>
 
-                <button>Send</button>
+                <button class="send">Send</button>
             </form>
 
-            <button>Remove</button>
+            <button class="reset"><img class="reset-img" src="./imgs/trash.jpg"></button>
         </div>
     </section>
     `,
