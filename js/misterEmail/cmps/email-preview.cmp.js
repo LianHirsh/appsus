@@ -12,9 +12,17 @@ export default {
             </div>
             <div v-else class="openEmail">
                 <div class="preview-buttons">
-                    <router-link class="open-email" :to="'/emailApp/'+email.id"><img class="extend-img" src="imgs/extend.png"/></router-link>
-                    <button class="delete-email" @click="$emit('removed', email.id)"><img class="trash-img" src="imgs/trash.jpg"/></button>
-                    <button class="star-email" @click.stop="$emit('stared', email.id)" :class="starClass">{{star}}</button>
+                    <router-link class="open-email" :to="'/emailApp/'+email.id">
+                        <img class="extend-img" src="imgs/extend.png"/>
+                    </router-link>
+                    <button class="delete-email" @click="$emit('removed', email.id)">
+                        <img class="trash-img" src="imgs/trash.jpg"/>
+                    </button>
+                    <button class="star-email" @click.stop="$emit('stared', email.id)" 
+                    :class="starClass">{{star}}</button>
+                    <button class="read-email" @click.stop="$emit('read', email.id)">
+                        <img class="read-img" src="imgs/read.png"/>
+                    </button>
                 </div>
                 <div class="mail-info">
                     <h2 class="from">{{email.from.name}}</h2>

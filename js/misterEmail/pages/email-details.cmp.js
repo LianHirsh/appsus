@@ -32,7 +32,7 @@ export default {
             emailService.getEmailById(emailId)
                 .then(email => {
                     this.email = email;
-                    emailService.changeIsReadStatus(emailId);
+                    emailService.changeIsReadStatus(emailId, true);
                 });
         },
         removeEmail() {

@@ -15,7 +15,8 @@ export const emailService = {
     changeStare,
     changeSnoozedStatus,
     changeSentStatus,
-    changeDraftStatus
+    changeDraftStatus,
+    filterEmailsBySearch
 }
 
 function query(emailType) {
@@ -49,9 +50,14 @@ function filterEmails(emailType) {
     return sortedEmails;
 }
 
-function changeIsReadStatus(emailId) {
+function changeIsReadStatus(emailId, isUserRead) {
     let email = _findById(emailId);
-    email.isRead = true;
+
+    if (isUserRead) {
+        email.isRead = true;
+    } else {
+        email.isRead = !email.isRead;
+    }
 
     storageService.store(EMAILS_KEY, emailsDB);
 
@@ -115,6 +121,46 @@ function getEmails() {
 function getEmailById(emailId) {
     const mail = emailsDB.find(email => email.id === emailId);
     return Promise.resolve(mail);
+}
+
+function filterEmailsBySearch(filterBy) {
+    if (filterBy === 'Read') {
+        return Promise.resolve(_filterByRead());
+    } else if (filterBy === 'Unread') {
+        return Promise.resolve(_filterByUnread());
+    } else if (filterBy === 'All') {
+        return Promise.resolve(emailsDB);
+    } else {
+        return Promise.resolve(_filterByText(filterBy));
+    }
+}
+
+function _filterByRead() {
+    return emailsDB.filter(email => email.isRead)
+}
+
+function _filterByUnread() {
+    return emailsDB.filter(email => !email.isRead)
+}
+
+function _filterByText(filterBy) {
+    const filter = filterBy.toLowerCase();
+
+    return emailsDB.filter(email => {
+        const name = email.from.name.toLowerCase();
+        const subject = email.subject.toLowerCase();
+        const body = email.body.toLowerCase();
+
+        if (name.includes(filter)) {
+            return true;
+        } else if (subject.includes(filter)) {
+            return true;
+        } else if (body.includes(filter)) {
+            return true;
+        } else {
+            return false;
+        }
+    });
 }
 
 function _createEmails() {
