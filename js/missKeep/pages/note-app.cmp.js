@@ -11,12 +11,30 @@ export default {
         <section class="note-app">
             <note-filter @filterByText="filterNotes" @filterByType="filterNotes"></note-filter>
             <add-note></add-note>
-            <ul class="notes-list">
-                <li v-for="(note, idx) in notes" class="note" :style="bkg(note)">
+
+            <h3 v-if="isPinnedNotes">Pinned Notes</h3>
+
+            <ul class="pinned-notes notes-list">
+                <li v-for="(note, idx) in notes" v-if="note.isPinned" class="note" :style="bkg(note)">
                     <component 
                         :is="note.type" 
                         :info="note.info"
                         :id="note.id"
+                        @pin="pinNote"
+                        @remove="removeNote"
+                        @update="updateNote">
+                    </component>
+                </li>
+            </ul>
+
+            <h3 v-if="isPinnedNotes">Other Notes</h3>
+            <ul class="notes-list">
+                <li v-for="(note, idx) in notes" v-if="!note.isPinned" class="note" :style="bkg(note)">
+                    <component 
+                        :is="note.type" 
+                        :info="note.info"
+                        :id="note.id"
+                        @pin="pinNote"
                         @remove="removeNote"
                         @update="updateNote"
                         @colorChange="changeBkg">
@@ -28,7 +46,8 @@ export default {
     data() {
         return {
             notes: [],
-            filterBy: ''
+            filterBy: '',
+            isPinnedNotes: false
         }
     },
     created() {
@@ -59,6 +78,12 @@ export default {
         filterNotes(filterBy) {
             this.filterBy = filterBy;
             this.getNotes();
+        },
+        pinNote(noteId) {
+            noteService.changePinnedStatus(noteId)
+                .then(() => {
+                    this.isPinnedNotes = true;
+                })
         }
     },
     components: {

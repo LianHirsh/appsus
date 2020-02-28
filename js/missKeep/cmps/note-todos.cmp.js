@@ -6,7 +6,7 @@ export default {
                 <div class="todos">
                     <h3>{{info.label}}</h3>
                     <div class="todo" v-for="todo in info.todos">
-                        <p>{{todo.text}}</p>
+                        <p @click="$event.target.classList.toggle('done') ; complete(todo)">{{todo.text}}</p>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@ export default {
 
             <section v-if="isEdit">
                 <input
-                v-model="newTodos"
+                v-model="todos"
                 type="text"
                 autocomplete=off
                 />
@@ -35,8 +35,8 @@ export default {
     data() {
         return {
             isEdit: false,
-            newTodos: this.info.url,
-            isColorOpt: false
+            isColorOpt: false,
+            todos: this.info.todos
         }
     },
     methods: {
@@ -45,6 +45,10 @@ export default {
         },
         editNote() {
             this.isEdit = !this.isEdit;
+            let todosTxt = this.todos.map(todo => {
+                return todo.text
+            });
+            this.todos = todosTxt.join(',');
         },
         updateNote() {
             this.$emit('update', this.id, this.newTodos, 'noteTodos')
@@ -55,6 +59,20 @@ export default {
         },
         changeColor(color) {
             this.$emit('colorChange', color, this.id)
+        },
+        updateTodos() {
+            let todosArr = this.todos.split(',');
+            let todosObj = todosArr.map(todo => {
+                return { text: todo, doneAt: null }
+            });
+
+            this.todos = todosObj;
+
+            this.$emit('update', this.id, this.todos, 'noteTodos')
+            this.isEdit = !this.isEdit;
+        },
+        complete(todo) {
+            console.log(todo)
         }
     },
     components: {
