@@ -2,10 +2,10 @@ export default {
     template: `
         <section class="note-img">
             <div class="note-img-content"> 
-                <img :src="info.url" title="info.title"/>
+                <img :src="info.url" :title="info.title"/>
             </div>
-            <div class="flex">
-                <div class="toolbar"><div>
+            <div>
+                <div class="toolbar"></div>
                 <span class="far fa-image visible"></span>
             </div>
         </section>

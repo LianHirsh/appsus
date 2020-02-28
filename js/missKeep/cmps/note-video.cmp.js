@@ -1,16 +1,15 @@
 export default {
     template: `
         <section class="note-video">
-        <div class="note-video-content">
-            <video width="200" height="150" controls>
-                <source :src="video.info.url" title="video.info.title" type="video/mp4">
-            </video>
-        </div>
-            <div class="flex">
-                <span class="fab fa-youtube visible"></span>
+            <div class="note-video-content">
+                <iframe class="video" :title="info.title" :src="'https://www.youtube.com/embed/'+info.urlYouTubeId">
+                </iframe>
+            </div>
+            <div>
                 <div class="toolbar"></div>
+                <span class="fab fa-youtube visible"></span>
             </div>
         </section>
     `,
-     props: ['video']
+    props: ['info']
 }

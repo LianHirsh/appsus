@@ -32,7 +32,7 @@ function addNote(note) {
     const newNote = _createNote(note);
 
     notesDB.unshift(newNote);
-    storageService.store(NOTES_KEY, notes);
+    storageService.store(NOTES_KEY, notesDB);
 
     return Promise.resolve();
 }
@@ -73,7 +73,7 @@ function _createNotes() {
     let notes = [{
             type: 'noteText',
             info: {
-                txt: "Fullstack Me Baby!"
+                text: 'Fullstack Me Baby!'
             },
             style: {
                 backgroundColor: '#a2b9bc'
@@ -82,7 +82,7 @@ function _createNotes() {
         {
             type: 'noteImg',
             info: {
-                url: "http://some-img/me",
+                url: 'https://specials-images.forbesimg.com/imageserve/5db4c7b464b49a0007e9dfac/960x0.jpg?fit=scale',
                 title: "Me playing Mi"
             },
             style: {
@@ -92,8 +92,8 @@ function _createNotes() {
         {
             type: 'noteTodos',
             info: {
-                label: "How was it:",
-                todos: [{ txt: "Do that", doneAt: null }, { txt: "Do this", doneAt: 187111111 }]
+                label: 'How was it:',
+                todos: [{ text: 'Do that', doneAt: null }, { text: 'Do this', doneAt: 187111111 }]
             },
             style: {
                 backgroundColor: '#a2b9bc'
@@ -102,8 +102,8 @@ function _createNotes() {
         {
             type: 'noteVideo',
             info: {
-                url: "http://some-img/me",
-                title: "My video"
+                urlYouTubeId: 'tgbNymZ7vqY',
+                title: 'My video'
             },
             style: {
                 backgroundColor: '#a2b9bc'

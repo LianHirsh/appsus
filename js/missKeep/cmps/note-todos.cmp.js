@@ -4,14 +4,16 @@ export default {
             <div class="note-todos-content"> 
                 <div class="todos">
                     <h3>{{info.label}}</h3>
-                    <div class="todo" v-for="todo in info.todos">{{todo}}</div>
+                    <div class="todo" v-for="todo in info.todos">
+                        <p>{{todo.text}}</p>
+                    </div>
                 </div>
             </div>
-            <div class="flex">
-                <div class="toolbar"><div>
+            <div>
+                <div class="toolbar"></div>
                 <span class="fas fa-list visible"></span>
             </div>
         </section>
     `,
-    props: ['todos']
+    props: ['info']
 }

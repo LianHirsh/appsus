@@ -1,4 +1,4 @@
-import {noteService} from '../services/note.service.js';
+import { noteService } from '../services/note.service.js';
 import addNote from '../cmps/note-add.cmp.js';
 import noteText from '../cmps/note-text.cmp.js';
 import noteImg from '../cmps/note-img.cmp.js';
@@ -9,12 +9,13 @@ export default {
     template: `
         <section class="note-app">
             <add-note></add-note>
-
-            <ul>
-                <li v-for="(note, idx) in notes">
+            <ul class="notes-list">
+                <li v-for="(note, idx) in notes" class="note">
                     <component 
                         :is="note.type" 
-                        :info="note.info">
+                        :info="note.info"
+                        :idx="idx"
+                        @remove="removeNote">
                     </component>
                 </li>
             </ul>
@@ -27,14 +28,20 @@ export default {
     },
     created() {
         noteService.query()
-            .then (notes=> {
+            .then(notes => {
+                console.log(notes);
                 this.notes = notes;
             })
     },
+    methods: {
+        removeNote(){
+            console.log('remove')
+        }
+    },
     components: {
-       addNote,
+        addNote,
         noteService,
-       noteText,
+        noteText,
         noteImg,
         noteVideo,
         noteTodos

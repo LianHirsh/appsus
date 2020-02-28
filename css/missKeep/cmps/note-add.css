@@ -1,14 +1,13 @@
 .note-add {
     padding: 10px 0;
     width: 600px;
-    margin: 0 auto 2em;
+    margin: 0 auto 30px;
     max-width: 100%;
     background-color: white;
 }
 
 .note-add input {
-    padding: 0.5em 1em;
-    padding-top: 1.2rem;
+    padding: 10px 20px;
     line-height: 1.5em;
     border-color: transparent;
     outline: none;
@@ -18,14 +17,15 @@
 }
 
 .icons span {
-    padding: 0.5em 0.5em;
+    padding: 10px;
     color: #ccc;
     cursor: pointer;
-    margin: auto 5px;
+    margin: 5px;
+    margin-top: 5px;
 }
 
 input[type="radio"] {
-    visibility: hidden;
+    display: none;
 }
 
 :checked+span {

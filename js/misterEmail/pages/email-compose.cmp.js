@@ -33,13 +33,16 @@ export default {
         addEmail() {
             emailService.addEmail(this.email)
                 .then((res) => {
-                    console.log(res.id)
                     emailService.changeSentStatus(res.id);
                     this.$router.push('/emailApp/emailList/sentMail');
                 })
         },
         removeEmail() {
-            this.$router.push('emailList/inbox')
+            emailService.addEmail(this.email)
+                .then((res) => {
+                    emailService.changeDraftStatus(res.id);
+                    this.$router.push('/emailApp/emailList/drafts');
+                })
         }
     },
     created() {

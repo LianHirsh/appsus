@@ -13,7 +13,7 @@ export default {
                     <router-link to="/noteApp" class="link" exact>
                         MissKeep
                     </router-link>
-                    <router-link to="/emailApp" class="link" exact>
+                    <router-link to="/emailApp/emailList/inbox" class="link" exact>
                         MisterEmail
                     </router-link>
                 </nav>

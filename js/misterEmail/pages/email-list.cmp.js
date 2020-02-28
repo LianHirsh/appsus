@@ -6,12 +6,13 @@ export default {
         <section class="email-list">
             <ul class="list-preview" v-if="emails">
                 <li v-for="currEmail in emails">
-                    <email-preview :email="currEmail" @read="changeRead" @removed="removeEmail" @stared="changeStar"></email-preview>
+                    <email-preview :email="currEmail" @read="changeReadStatus" @removed="removeEmail" 
+                    @stared="changeStar" @read-open="changeRead"></email-preview>
                 </li>
             </ul>
         </section>
     `,
-    props: ['listType', 'filterBy'],
+    props: ['listType', 'filterBy', 'sortBy'],
     data() {
         return {
             emails: []
@@ -20,6 +21,7 @@ export default {
     methods: {
         removeEmail(emailId) {
             emailService.removeEmail(emailId);
+            this.getEmails();
         },
         changeStar(emailId) {
             emailService.changeStare(emailId);
@@ -39,8 +41,11 @@ export default {
                     }
                 });
         },
-        changeRead(emailId) {
+        changeReadStatus(emailId) {
             emailService.changeIsReadStatus(emailId, false);
+        },
+        changeRead(emailId) {
+            emailService.changeIsReadStatus(emailId, true);
         }
     },
     watch: {
@@ -48,8 +53,10 @@ export default {
             this.getEmails();
         },
         'filterBy' () {
-            console.log(this.filterBy)
             this.getEmails();
+        },
+        'sortBy' () {
+            console.log('todo', this.sortBy);
         }
     },
     created() {
