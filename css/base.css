@@ -15,6 +15,7 @@
 @import './mainApp/app-header.css';
 @import './misterEmail/cmps/email-sort.css';
 @import './misterEmail/cmps/email-navbar.css';
+@import './missKeep/cmps/note-color.css';
 * {
     box-sizing: border-box;
 }

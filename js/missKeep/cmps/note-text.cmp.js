@@ -1,3 +1,4 @@
+import noteColors from './note-colors.cmp.js';
 export default {
     template: `
         <section class="note-text">
@@ -12,24 +13,23 @@ export default {
                     <span @click="changeBkgColor" class="fas fa-palette info colors dropdown"></span>
                 </div>
             </div>
-
             <section v-if="isEdit">
                 <input
                 v-model="newText"
                 type="text"
-                autocomplete=off
-                />
+                autocomplete=off/>
                 <button @click="updateNote">Update</button>
                 <button @click="editNote">Cancel</button>
             </section>
-            
+            <note-colors v-if="isColorOpt" @colorChange="changeColor"></note-colors>
         </section>
     `,
     props: ['info', 'id'],
     data() {
         return {
             isEdit: false,
-            newText: this.info.text
+            newText: this.info.text,
+            isColorOpt: false
         }
     },
     methods: {
@@ -42,6 +42,15 @@ export default {
         updateNote() {
             this.$emit('update', this.id, this.newText, 'noteText')
             this.isEdit = !this.isEdit;
+        },
+        changeBkgColor() {
+            this.isColorOpt = !this.isColorOpt;
+        },
+        changeColor(color) {
+            this.$emit('colorChange', color, this.id)
         }
+    },
+    components: {
+        noteColors
     }
 }

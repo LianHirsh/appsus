@@ -29,27 +29,9 @@ function query(emailType) {
     }
     emailsDB = emails;
 
-    let filteredEmails = filterEmails(emailType);
+    let filteredEmails = _filterEmails(emailType);
 
     return Promise.resolve(filteredEmails);
-}
-
-function filterEmails(emailType) {
-    const filteredEmails = emailsDB.filter(email => {
-        if (emailType === 'starred' && email.isStar) {
-            return email;
-        } else if (emailType === 'snoozed' && email.isSnoozed) {
-            return email;
-        } else if (emailType === 'sentMail' && email.isSentEmail) {
-            return email;
-        } else if (emailType === 'drafts' && email.isDraft) {
-            return email;
-        } else if (emailType === 'inbox' && !email.isDraft && !email.isSentEmail) {
-            return email;
-        }
-    });
-
-    return filteredEmails;
 }
 
 function changeIsReadStatus(emailId, isUserRead) {
@@ -159,6 +141,24 @@ function getUnreadCountEmails() {
     });
 
     return Promise.resolve(unreadCount);
+}
+
+function _filterEmails(emailType) {
+    const filteredEmails = emailsDB.filter(email => {
+        if (emailType === 'starred' && email.isStar) {
+            return email;
+        } else if (emailType === 'snoozed' && email.isSnoozed) {
+            return email;
+        } else if (emailType === 'sentMail' && email.isSentEmail) {
+            return email;
+        } else if (emailType === 'drafts' && email.isDraft) {
+            return email;
+        } else if (emailType === 'inbox' && !email.isDraft && !email.isSentEmail) {
+            return email;
+        }
+    });
+
+    return filteredEmails;
 }
 
 function _sortByTitle() {
