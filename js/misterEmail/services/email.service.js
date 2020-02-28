@@ -16,7 +16,8 @@ export const emailService = {
     changeSnoozedStatus,
     changeSentStatus,
     changeDraftStatus,
-    filterEmailsBySearch
+    filterEmailsBySearch,
+    getSortedEmails
 }
 
 function query(emailType) {
@@ -27,13 +28,13 @@ function query(emailType) {
     }
     emailsDB = emails;
 
-    let sortedEmails = filterEmails(emailType);
+    let filteredEmails = filterEmails(emailType);
 
-    return Promise.resolve(sortedEmails);
+    return Promise.resolve(filteredEmails);
 }
 
 function filterEmails(emailType) {
-    const sortedEmails = emailsDB.filter(email => {
+    const filteredEmails = emailsDB.filter(email => {
         if (emailType === 'starred' && email.isStar) {
             return email;
         } else if (emailType === 'snoozed' && email.isSnoozed) {
@@ -47,7 +48,7 @@ function filterEmails(emailType) {
         }
     });
 
-    return sortedEmails;
+    return filteredEmails;
 }
 
 function changeIsReadStatus(emailId, isUserRead) {
@@ -137,6 +138,38 @@ function filterEmailsBySearch(filterBy) {
     }
 }
 
+function getSortedEmails(sortBy) {
+    if (sortBy === 'title') {
+        _sortByTitle()
+    } else {
+        _sortByDate()
+    }
+
+    return Promise.resolve(emailsDB);
+}
+
+function _sortByTitle() {
+    emailsDB.sort(function(a, b) {
+        var subjectA = a.subject.toUpperCase();
+        var subjectB = b.subject.toUpperCase();
+
+        if (subjectA < subjectB) {
+            return -1;
+        }
+        if (subjectA > subjectB) {
+            return 1;
+        }
+
+        return 0;
+    });
+}
+
+function _sortByDate() {
+    emailsDB.sort(function(a, b) {
+        return a.sentAt - b.sentAt;
+    });
+}
+
 function _filterByRead() {
     return emailsDB.filter(email => email.isRead)
 }
@@ -167,8 +200,10 @@ function _filterByText(filterBy) {
 
 function _createEmails() {
     let emails = [
-        { from: { name: 'Ella', address: 'ella@gmail.com' }, cc: 'ella@gmail.com', subject: 'Wassap?', body: 'lorem Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book.' },
-        { from: { name: 'Lian', address: 'lian@gmail.com' }, cc: 'ella@gmail.com', subject: 'Wassap?', body: 'Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book.' }
+        { from: { name: 'Lian', address: 'lian@gmail.com' }, cc: 'ella@gmail.com', subject: 'aWassap?', body: 'Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book.', sentAt: 1582897777777 },
+        { from: { name: 'Ella', address: 'ella@gmail.com' }, cc: 'ella@gmail.com', subject: 'Wassap?', body: 'lorem Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book.', sentAt: 1582892340282 },
+        { from: { name: 'Lian', address: 'lian@gmail.com' }, cc: 'ella@gmail.com', subject: 'aWassap?', body: 'Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book.', sentAt: 1582892555555 }
+
     ].map(_createEmail)
 
     return emails;
@@ -181,7 +216,7 @@ function _createEmail(emailDetails) {
         cc: emailDetails.cc,
         subject: emailDetails.subject,
         body: emailDetails.body,
-        sentAt: Date.now(),
+        sentAt: emailDetails.sentAt,
         isRead: false,
         isStar: false,
         isSentEmail: false,

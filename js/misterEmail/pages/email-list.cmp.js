@@ -10,12 +10,14 @@ export default {
                     @stared="changeStar" @read-open="changeRead"></email-preview>
                 </li>
             </ul>
+            <h2 v-if="isNoEmails"> No emails to display</h2>
         </section>
     `,
     props: ['listType', 'filterBy', 'sortBy'],
     data() {
         return {
-            emails: []
+            emails: [],
+            isNoEmails: false
         }
     },
     methods: {
@@ -34,11 +36,12 @@ export default {
                         emailService.filterEmailsBySearch(this.filterBy)
                             .then(filteredEmails => {
                                 this.emails = filteredEmails;
-                                console.log(filteredEmails)
                             });
                     } else {
                         this.emails = emails;
                     }
+
+                    this.isNoEmails = (this.emails.length === 0) ? true : false;
                 });
         },
         changeReadStatus(emailId) {
@@ -46,6 +49,13 @@ export default {
         },
         changeRead(emailId) {
             emailService.changeIsReadStatus(emailId, true);
+        },
+        getSortedEmails() {
+            console.log(this.sortBy)
+            emailService.getSortedEmails(this.sortBy)
+                .then(emails => {
+                    this.emails = emails;
+                });
         }
     },
     watch: {
@@ -56,7 +66,7 @@ export default {
             this.getEmails();
         },
         'sortBy' () {
-            console.log('todo', this.sortBy);
+            this.getSortedEmails();
         }
     },
     created() {
