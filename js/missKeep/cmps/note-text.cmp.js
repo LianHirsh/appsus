@@ -7,9 +7,10 @@ export default {
             <div class="flex space-between">
                 <span class="fas fa-font visible"></span>
                 <div class="toolbar">
+                    <span @click="pinNote" class="fas fa-thumbtack"></span>
                     <span @click="editNote" class="fas fa-edit"></span>
                     <span @click="removeNote" class="fas fa-trash-alt danger"></span>
-                    <span @click="changeBkgColor" class="fas fa-palette info colors dropdown"></span>
+                    <!-- <span @click="changeBkgColor" class="fas fa-palette info colors dropdown"></span> -->
                 </div>
             </div>
 
@@ -42,6 +43,9 @@ export default {
         updateNote() {
             this.$emit('update', this.id, this.newText, 'noteText')
             this.isEdit = !this.isEdit;
+        },
+        pinNote() {
+            this.$emit('pin', this.id)
         }
     }
 }

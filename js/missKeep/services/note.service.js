@@ -37,6 +37,8 @@ function updateNote(noteId, info, type) {
         note.info.url = info;
     } else if (type === 'noteVideo') {
         note.info.urlYouTubeId = info;
+    } else if (type === 'noteTodos') {
+        note.info.todos = info
     }
     storageService.store(NOTES_KEY, notesDB);
 }
@@ -71,7 +73,7 @@ function getNotes() {
 function changePinnedStatus(noteId) {
     let note = _findNote(noteId);
     note.isPinned = !note.isPinned;
-
+    storageService.store(NOTES_KEY, notesDB);
     return Promise.resolve();
 }
 

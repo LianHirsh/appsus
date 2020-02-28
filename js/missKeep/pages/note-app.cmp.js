@@ -9,12 +9,30 @@ export default {
     template: `
         <section class="note-app">
             <add-note></add-note>
-            <ul class="notes-list">
-                <li v-for="(note, idx) in notes" class="note" :style="bkg(note)">
+
+            <h3 v-if="isPinnedNotes">Pinned Notes</h3>
+
+            <ul class="pinned-notes notes-list">
+                <li v-for="(note, idx) in notes" v-if="note.isPinned" class="note" :style="bkg(note)">
                     <component 
                         :is="note.type" 
                         :info="note.info"
                         :id="note.id"
+                        @pin="pinNote"
+                        @remove="removeNote"
+                        @update="updateNote">
+                    </component>
+                </li>
+            </ul>
+
+            <h3 v-if="isPinnedNotes">Other Notes</h3>
+            <ul class="notes-list">
+                <li v-for="(note, idx) in notes" v-if="!note.isPinned" class="note" :style="bkg(note)">
+                    <component 
+                        :is="note.type" 
+                        :info="note.info"
+                        :id="note.id"
+                        @pin="pinNote"
                         @remove="removeNote"
                         @update="updateNote">
                     </component>
@@ -24,7 +42,8 @@ export default {
     `,
     data() {
         return {
-            notes: []
+            notes: [],
+            isPinnedNotes: false
         }
     },
     created() {
@@ -39,10 +58,16 @@ export default {
             noteService.removeNote(noteId)
         },
         bkg(note) {
-            return `background-color: ${note.style.backgroundColor}`;
+            // return `background-color: ${note.style.backgroundColor}`;
         },
         updateNote(noteId, info, type) {
             noteService.updateNote(noteId, info, type)
+        },
+        pinNote(noteId) {
+            noteService.changePinnedStatus(noteId)
+                .then(()=> {
+                    this.isPinnedNotes = true
+                })
         }
     },
     components: {
