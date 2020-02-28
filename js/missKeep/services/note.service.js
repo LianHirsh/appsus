@@ -10,7 +10,8 @@ export const noteService = {
     getNotes,
     removeNote,
     addNote,
-    changePinnedStatus
+    changePinnedStatus,
+    updateNote
 }
 
 function query() {
@@ -28,6 +29,18 @@ function query() {
     return Promise.resolve(notesDB);
 }
 
+function updateNote(noteId, info, type) {
+    var note = _findNote(noteId);
+    if(type === 'noteText') {
+        note.info.text = info;
+    } else if (type === 'noteImg') {
+        note.info.url = info;
+    } else if (type === 'noteVideo') {
+        note.info.urlYouTubeId = info;
+    }
+    storageService.store(NOTES_KEY, notesDB);
+}
+
 function addNote(note) {
     const newNote = _createNote(note);
 
@@ -39,9 +52,7 @@ function addNote(note) {
 
 function removeNote(noteId) {
     const noteIdx = notesDB.findIndex(note => note.id === noteId);
-
     notesDB.splice(noteIdx, 1);
-
     storageService.store(NOTES_KEY, notesDB);
 
     return Promise.resolve();
@@ -59,7 +70,6 @@ function getNotes() {
 
 function changePinnedStatus(noteId) {
     let note = _findNote(noteId);
-
     note.isPinned = !note.isPinned;
 
     return Promise.resolve();

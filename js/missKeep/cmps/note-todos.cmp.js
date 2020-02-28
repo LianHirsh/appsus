@@ -12,15 +12,39 @@ export default {
             <div class="flex space-between">
                 <span class="fas fa-list visible"></span>
                 <div class="toolbar">
+                    <span @click="editNote" class="fas fa-edit"></span>
                     <span @click="removeNote" class="fas fa-trash-alt danger"></span>
                 </div>
             </div>
+
+            <section v-if="isEdit">
+                <input
+                v-model="newTodos"
+                type="text"
+                autocomplete=off
+                />
+                <button @click="updateNote">Update</button>
+                <button @click="editNote">Cancel</button>
+            </section>
         </section>
     `,
     props: ['info','id'],
+    data() {
+        return {
+            isEdit: false,
+            newTodos: this.info.url
+        }
+    },
     methods: {
         removeNote() {
             this.$emit('remove',this.id)
+        },
+        editNote() {
+            this.isEdit = !this.isEdit;
+        },
+        updateNote() {
+            this.$emit('update',this.id, this.newTodos, 'noteTodos')
+            this.isEdit = !this.isEdit;
         }
     }
 }

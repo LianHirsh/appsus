@@ -15,7 +15,8 @@ export default {
                         :is="note.type" 
                         :info="note.info"
                         :id="note.id"
-                        @remove="removeNote">
+                        @remove="removeNote"
+                        @update="updateNote">
                     </component>
                 </li>
             </ul>
@@ -39,6 +40,9 @@ export default {
         },
         bkg(note) {
             return `background-color: ${note.style.backgroundColor}`;
+        },
+        updateNote(noteId, info, type) {
+            noteService.updateNote(noteId, info, type)
         }
     },
     components: {
