@@ -8,15 +8,39 @@ export default {
             <div class="flex space-between">
                 <span class="fab fa-youtube visible"></span>
                 <div class="toolbar">
+                    <span @click="editNote" class="fas fa-edit"></span>
                     <span @click="removeNote" class="fas fa-trash-alt danger"></span>
                 </div>
             </div>
+
+            <section v-if="isEdit">
+                <input
+                v-model="newUrlYouTubeId"
+                type="text"
+                autocomplete=off
+                />
+                <button @click="updateNote">Update</button>
+                <button @click="editNote">Cancel</button>
+            </section>
         </section>
     `,
     props: ['info','id'],
+    data() {
+        return {
+            isEdit: false,
+            newUrlYouTubeId: this.info.urlYouTubeId
+        }
+    },
     methods: {
         removeNote() {
             this.$emit('remove',this.id)
+        },
+        editNote() {
+            this.isEdit = !this.isEdit;
+        },
+        updateNote() {
+            this.$emit('update',this.id, this.newUrlYouTubeId, 'noteVideo')
+            this.isEdit = !this.isEdit;
         }
     }
 }
