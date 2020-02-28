@@ -76,7 +76,7 @@ function _createNotes() {
                 text: 'Fullstack Me Baby!'
             },
             style: {
-                backgroundColor: '#a2b9bc'
+                backgroundColor: '#F49097'
             }
         },
         {
@@ -86,7 +86,7 @@ function _createNotes() {
                 title: "Me playing Mi"
             },
             style: {
-                backgroundColor: '#a2b9bc'
+                backgroundColor: '#F5E960'
             }
         },
         {
@@ -96,7 +96,7 @@ function _createNotes() {
                 todos: [{ text: 'Do that', doneAt: null }, { text: 'Do this', doneAt: 187111111 }]
             },
             style: {
-                backgroundColor: '#a2b9bc'
+                backgroundColor: '#9EE4DA'
             }
         },
         {
@@ -106,7 +106,7 @@ function _createNotes() {
                 title: 'My video'
             },
             style: {
-                backgroundColor: '#a2b9bc'
+                backgroundColor: '#80ED99'
             }
         }
     ].map(_createNote);

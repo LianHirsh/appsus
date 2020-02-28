@@ -1,3 +1,4 @@
+import { eventBus } from '../../mainApp/services/event-bus.service.js';
 import { emailService } from '../services/email.service.js';
 
 export default {
@@ -13,7 +14,7 @@ export default {
 
                 <input type="email"  placeholder="Bcc:" />
 
-                <input type="text"  placeholder="Subject:" v-model="email.subject" />
+                <input type="text"  placeholder="Subject:" v-model="email.subject"/>
 
                 <textarea name="body" v-model="email.body"></textarea>
 
@@ -24,9 +25,10 @@ export default {
     
     </section>
     `,
+    props: ['replyEmail'],
     data() {
         return {
-            email: {}
+            email: this.replyEmail || {}
         }
     },
     methods: {
@@ -44,8 +46,5 @@ export default {
                     this.$router.push('/emailApp/emailList/drafts');
                 })
         }
-    },
-    created() {
-
     }
 }

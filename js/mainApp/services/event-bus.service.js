@@ -1,1 +1,1 @@
-export const evenBus = new Vue();
+export const eventBus = new Vue();

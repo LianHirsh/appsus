@@ -1,3 +1,4 @@
+import { eventBus } from '../../mainApp/services/event-bus.service.js';
 import { emailService } from '../services/email.service.js';
 import emailPreview from '../cmps/email-preview.cmp.js';
 
@@ -46,15 +47,23 @@ export default {
         },
         changeReadStatus(emailId) {
             emailService.changeIsReadStatus(emailId, false);
+            this.updateUnreadCountEmails();
         },
         changeRead(emailId) {
             emailService.changeIsReadStatus(emailId, true);
+            this.updateUnreadCountEmails();
         },
         getSortedEmails() {
-            console.log(this.sortBy)
             emailService.getSortedEmails(this.sortBy)
                 .then(emails => {
                     this.emails = emails;
+                });
+        },
+        updateUnreadCountEmails() {
+            emailService.getUnreadCountEmails()
+                .then(res => {
+                    const unreadCount = res;
+                    eventBus.$emit('countChange', unreadCount);
                 });
         }
     },
@@ -71,6 +80,7 @@ export default {
     },
     created() {
         this.getEmails();
+        this.updateUnreadCountEmails();
     },
     components: {
         emailPreview

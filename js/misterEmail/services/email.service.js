@@ -17,7 +17,8 @@ export const emailService = {
     changeSentStatus,
     changeDraftStatus,
     filterEmailsBySearch,
-    getSortedEmails
+    getSortedEmails,
+    getUnreadCountEmails
 }
 
 function query(emailType) {
@@ -148,6 +149,18 @@ function getSortedEmails(sortBy) {
     return Promise.resolve(emailsDB);
 }
 
+function getUnreadCountEmails() {
+    let unreadCount = 0;
+
+    emailsDB.forEach(email => {
+        if (!email.isRead) {
+            unreadCount++;
+        }
+    });
+
+    return Promise.resolve(unreadCount);
+}
+
 function _sortByTitle() {
     emailsDB.sort(function(a, b) {
         var subjectA = a.subject.toUpperCase();
@@ -216,7 +229,7 @@ function _createEmail(emailDetails) {
         cc: emailDetails.cc,
         subject: emailDetails.subject,
         body: emailDetails.body,
-        sentAt: emailDetails.sentAt,
+        sentAt: emailDetails.sentAt || Date.now(),
         isRead: false,
         isStar: false,
         isSentEmail: false,

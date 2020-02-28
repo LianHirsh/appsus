@@ -1,3 +1,4 @@
+import { eventBus } from '../../mainApp/services/event-bus.service.js';
 import { emailService } from '../../misterEmail/services/email.service.js';
 
 export default {
@@ -13,6 +14,9 @@ export default {
                 </button>
                 <button class="draft-email" @click="changeDraftStatus" title="To draft email">
                     <img class="paper-img" src="imgs/paper.png"/>
+                </button>
+                <button class="reply-email" @click="replyEmail" title="Reply">
+                    <img class="reply-img" src="imgs/reply.png"/>
                 </button>
             </div>
             <h2>{{email.subject}}</h2>
@@ -44,6 +48,9 @@ export default {
         },
         changeDraftStatus() {
             emailService.changeDraftStatus(this.email.id);
+        },
+        replyEmail() {
+            this.$emit('reply', this.email);
         }
     },
     created() {

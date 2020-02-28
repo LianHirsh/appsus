@@ -14,6 +14,7 @@
 @import './mainApp/long-text.css';
 @import './mainApp/app-header.css';
 @import './misterEmail/cmps/email-sort.css';
+@import './misterEmail/cmps/email-navbar.css';
 * {
     box-sizing: border-box;
 }

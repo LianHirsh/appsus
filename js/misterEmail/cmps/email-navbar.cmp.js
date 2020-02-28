@@ -1,3 +1,5 @@
+import emailStatus from '../cmps/email-status.cmp.js';
+
 export default {
     template: `
     <section class="side-navbar">
@@ -5,8 +7,8 @@ export default {
             <router-link to="/emailApp/compose" exact>
                 Compose
             </router-link>
-            <router-link to="/emailApp/emailList/inbox" exact>
-                Inbox
+            <router-link to="/emailApp/emailList/inbox" class="flex" exact>
+                <div>Inbox &nbsp</div> <email-status class="unreadCount"></email-status>
             </router-link>
             <router-link to="/emailApp/emailList/starred" exact>
                 Starred
@@ -22,5 +24,8 @@ export default {
             </router-link>
         </nav>
     </section>
-    `
+    `,
+    components: {
+        emailStatus
+    }
 }

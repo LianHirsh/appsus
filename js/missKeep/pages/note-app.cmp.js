@@ -10,7 +10,7 @@ export default {
         <section class="note-app">
             <add-note></add-note>
             <ul class="notes-list">
-                <li v-for="(note, idx) in notes" class="note">
+                <li v-for="(note, idx) in notes" class="note" :style="bkg(note)">
                     <component 
                         :is="note.type" 
                         :info="note.info"
@@ -34,8 +34,11 @@ export default {
             })
     },
     methods: {
-        removeNote(noteId){
-            noteService.removeNote(noteId)   
+        removeNote(noteId) {
+            noteService.removeNote(noteId)
+        },
+        bkg(note) {
+            return `background-color: ${note.style.backgroundColor}`;
         }
     },
     components: {

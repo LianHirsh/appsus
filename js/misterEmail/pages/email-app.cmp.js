@@ -10,7 +10,8 @@ export default {
             @filterByText="filterEmails">
             </filter-emails>
             <sort-emails class="sort" @sort="sortEmails"></sort-emails>
-            <router-view class="main" :listType="listType" :filterBy="filterBy" :sortBy="sortBy">
+            <router-view class="main" :listType="listType" :filterBy="filterBy" :sortBy="sortBy"
+            @reply="updateEmail" :replyEmail="replyEmail">
             </router-view>
         </section>
     `,
@@ -18,7 +19,8 @@ export default {
         return {
             listType: null,
             filterBy: '',
-            sortBy: ''
+            sortBy: '',
+            replyEmail: null
         }
     },
     methods: {
@@ -27,6 +29,10 @@ export default {
         },
         sortEmails(sortBy) {
             this.sortBy = sortBy;
+        },
+        updateEmail(email) {
+            this.replyEmail = JSON.parse(JSON.stringify(email));
+            this.$router.push('/emailApp/compose');
         }
     },
     watch: {
