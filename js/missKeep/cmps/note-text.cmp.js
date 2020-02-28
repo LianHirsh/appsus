@@ -3,7 +3,6 @@ export default {
         <section class="note-text">
             <div v-if="info" class="note-text-content">
                 <p>{{info.text}}</p>
-                {{idx}}
             </div>
             <div class="flex space-between">
                 <span class="fas fa-font visible"></span>
@@ -13,10 +12,10 @@ export default {
             </div>
         </section>
     `,
-    props: ['info','idx'],
+    props: ['info','id'],
     methods: {
         removeNote() {
-            this.$emit('remove')
+            this.$emit('remove',this.id)
         }
     }
 }

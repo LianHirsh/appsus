@@ -4,11 +4,18 @@ export default {
             <div class="note-img-content"> 
                 <img :src="info.url" :title="info.title"/>
             </div>
-            <div>
-                <div class="toolbar"></div>
+            <div class="flex space-between">
                 <span class="far fa-image visible"></span>
+                <div class="toolbar">
+                    <span @click="removeNote" class="fas fa-trash-alt danger"></span>
+                </div>
             </div>
         </section>
     `,
-    props: ['info']
+    props: ['info','id'],
+    methods: {
+        removeNote() {
+            this.$emit('remove',this.id)
+        }
+    }
 }

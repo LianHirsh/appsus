@@ -14,7 +14,7 @@ export default {
                     <component 
                         :is="note.type" 
                         :info="note.info"
-                        :idx="idx"
+                        :id="note.id"
                         @remove="removeNote">
                     </component>
                 </li>
@@ -34,8 +34,8 @@ export default {
             })
     },
     methods: {
-        removeNote(){
-            console.log('remove')
+        removeNote(noteId){
+            noteService.removeNote(noteId)   
         }
     },
     components: {

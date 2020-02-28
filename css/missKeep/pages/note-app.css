@@ -20,3 +20,7 @@
 .toolbar {
     display: inline;
 }
+
+.toolbar span {
+    cursor: pointer;
+}
