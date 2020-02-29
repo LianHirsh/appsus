@@ -1,19 +1,28 @@
 .note-add {
-    padding: 10px 0;
+    padding: 10px 20px;
     width: 600px;
     margin: 0 auto 30px;
     max-width: 100%;
+    border: solid rgba(0, 0, 0, .1);
+    border-radius: 0.3rem;
     background-color: white;
 }
 
 .note-add input {
-    padding: 10px 20px;
     line-height: 1.5em;
     border-color: transparent;
     outline: none;
-    width: 100%;
-    max-width: 100%;
     font-size: 1rem;
+}
+
+.add-title {
+    width: 100px;
+    padding: 10px 15px;
+}
+
+.add-lable {
+    width: 70px;
+    padding: 0px;
 }
 
 .icons span {

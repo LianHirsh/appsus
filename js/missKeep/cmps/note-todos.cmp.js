@@ -11,7 +11,7 @@ export default {
                 </div>
             </div>
             <div class="flex space-between">
-                <span class="fas fa-list visible"></span>
+                <span class="fas fa-list visible type"></span>
                 <div class="toolbar">
                     <span @click="pinNote" class="fas fa-thumbtack"></span>
                     <span @click="editNote" class="fas fa-edit"></span>

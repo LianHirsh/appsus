@@ -3,6 +3,8 @@
 @import './missKeep/cmps/note-txt.css';
 @import './missKeep/cmps/note-video.css';
 @import './missKeep/cmps/note-add.css';
+@import './missKeep/cmps/note-list.css';
+@import './missKeep/cmps/note-filter.css';
 @import './missKeep/pages/note-app.css';
 @import './misterEmail/cmps/email-filter.css';
 @import './misterEmail/cmps/email-list.css';
@@ -29,7 +31,6 @@ html {
     font-family: Lato;
 }
 
-
 /* typography */
 
 @font-face {
@@ -47,7 +48,6 @@ html {
     src: url(../fonts/Lato/Lato-Regular.ttf)
 }
 
-
 /* layout */
 
 .container {
@@ -62,7 +62,6 @@ footer {
     color: white;
     font-size: 1.2rem;
 }
-
 
 /* helpers */
 

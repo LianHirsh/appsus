@@ -6,7 +6,7 @@ export default {
                 <img :src="info.url" :title="info.title"/>
             </div>
             <div class="flex space-between">
-                <span class="far fa-image visible"></span>
+                <span class="far fa-image visible type"></span>
                 <div class="toolbar">
                     <span @click="pinNote" class="fas fa-thumbtack"></span>
                     <span @click="editNote" class="fas fa-edit"></span>

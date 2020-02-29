@@ -7,7 +7,7 @@ export default {
                 </iframe>
             </div>
             <div class="flex space-between">
-                <span class="fab fa-youtube visible"></span>
+                <span class="fab fa-youtube visible type"></span>
                 <div class="toolbar">
                     <span @click="pinNote" class="fas fa-thumbtack"></span>
                     <span @click="editNote" class="fas fa-edit"></span>

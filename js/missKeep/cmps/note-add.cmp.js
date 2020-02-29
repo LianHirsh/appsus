@@ -9,6 +9,7 @@ export default {
         type="text"
         autocomplete=off
         placeholder="Add title"
+        class="add-title"
         />
 
         <input
@@ -17,6 +18,7 @@ export default {
         type="text"
         autocomplete=off
         placeholder="Add label"
+        class="add-lable"
         />
 
         <input 
@@ -25,6 +27,7 @@ export default {
         type="text"
         autocomplete=off
         :placeholder="[[placeholder]]"
+        class="user-info"
         />
 
         <div class="icons flex">

@@ -1,14 +1,6 @@
 .note-app {
     padding: 32px 16px 0;
-    background-color: lightgray;
-    height: 100%;
-}
-
-.notes-list {
-    list-style-type: none;
-    column-count: 4;
-    column-fill: auto;
-    column-gap: 3em;
+    background-color: #EDEDED;
 }
 
 .note {
@@ -23,8 +15,14 @@
 
 .toolbar {
     display: inline;
+    margin-top: 5px;
 }
 
 .toolbar span {
     cursor: pointer;
+    margin-left: 5px;
+}
+
+.type {
+    margin-top: 5px;
 }
