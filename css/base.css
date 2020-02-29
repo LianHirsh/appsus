@@ -16,6 +16,7 @@
 @import './misterEmail/cmps/email-sort.css';
 @import './misterEmail/cmps/email-navbar.css';
 @import './missKeep/cmps/note-color.css';
+@import './mainApp/pages/home.css';
 * {
     box-sizing: border-box;
 }
@@ -24,12 +25,42 @@ body {
     margin: 0;
 }
 
+html {
+    font-family: Lato;
+}
+
+
+/* typography */
+
+@font-face {
+    font-family: Inconsolata;
+    src: url(../fonts/Inconsolata/Inconsolata-Regular.ttf)
+}
+
+@font-face {
+    font-family: Inconsolata-bold;
+    src: url(../fonts/Inconsolata/Inconsolata-Bold.ttf)
+}
+
+@font-face {
+    font-family: Lato;
+    src: url(../fonts/Lato/Lato-Regular.ttf)
+}
+
 
 /* layout */
 
 .container {
     max-width: 1200px;
     margin: auto;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-size: 1.2rem;
 }
 
 

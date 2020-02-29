@@ -1,0 +1,22 @@
+.home-img {
+    height: 80%;
+    width: 100%;
+    object-fit: cover;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.main-container {
+    width: 90%;
+    height: 85vh;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.home-title {
+    margin: 0;
+    font-size: 3rem;
+    font-family: Inconsolata-bold;
+    color: #162C01;
+}
