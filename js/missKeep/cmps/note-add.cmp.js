@@ -1,4 +1,4 @@
-import {noteService} from '../services/note.service.js'
+import { noteService } from '../services/note.service.js'
 
 export default {
     template: `
@@ -52,8 +52,8 @@ export default {
     `,
     data() {
         return {
-            note:{type: 'noteText'},
-            placeholder:'What\'s on your mind...',
+            note: { type: 'noteText' },
+            placeholder: 'What\'s on your mind...',
             info: '',
             isTodos: false,
             todosLabel: '',
@@ -66,7 +66,7 @@ export default {
             this.isTodos = false;
             this.isTitle = false;
             this.title = '',
-            this.todosLabel = ''
+                this.todosLabel = ''
 
             if (this.note.type === 'noteText') {
                 this.placeholder = 'What\'s on your mind...'
@@ -84,26 +84,29 @@ export default {
     },
     methods: {
         updateInfo() {
-          if(this.note.type === 'noteText') this.note.info = {text: this.info}
-          else if(this.note.type === 'noteImg') {
-              this.note.info = {url: this.info, title: this.title}
-          }
-          else if(this.note.type === 'noteVideo') {
-              this.note.info = {urlYouTubeId: this.info, title: this.title}
-          }
-          else if(this.note.type === 'noteTodos'){
-            let todos = this.info.split(',');
-            var todosObj = todos.map(todo=> {
-               return { text: todo, doneAt: null}
-            });
-            this.note.info = {todos: todosObj, label: this.todosLabel};
-          } 
-          noteService.addNote(this.note)
-             .then(()=> {
-                 this.info = '';
-                 this.title = '';
-                 this.todosLabel = '';
-             })
+            if (this.note.type === 'noteText') this.note.info = { text: this.info }
+            else if (this.note.type === 'noteImg') {
+                this.note.info = { url: this.info, title: this.title }
+            } else if (this.note.type === 'noteVideo') {
+                const youtubeId = this.convertYoutubeUrl(this.info);
+                this.note.info = { urlYouTubeId: youtubeId, title: this.title }
+            } else if (this.note.type === 'noteTodos') {
+                let todos = this.info.split(',');
+                var todosObj = todos.map(todo => {
+                    return { text: todo, doneAt: null }
+                });
+                this.note.info = { todos: todosObj, label: this.todosLabel };
+            }
+            noteService.addNote(this.note)
+                .then(() => {
+                    this.info = '';
+                    this.title = '';
+                    this.todosLabel = '';
+                })
+        },
+        convertYoutubeUrl(url) {
+            const urlParts = url.split('v=');
+            return urlParts[urlParts.length - 1];
         }
     }
 }
