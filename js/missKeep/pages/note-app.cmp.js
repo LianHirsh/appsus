@@ -58,7 +58,7 @@ export default {
             noteService.removeNote(noteId)
         },
         bkg(note) {
-            // return `background-color: ${note.style.backgroundColor}`;
+            return `background-color: ${note.style.backgroundColor}`;
         },
         updateNote(noteId, info, type) {
             noteService.updateNote(noteId, info, type)
