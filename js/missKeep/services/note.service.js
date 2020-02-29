@@ -12,7 +12,8 @@ export const noteService = {
     addNote,
     changePinnedStatus,
     updateNote,
-    changeBkgColor
+    changeBkgColor,
+    isPinnedNotes
 }
 
 function query(filterBy) {
@@ -89,6 +90,10 @@ function changeBkgColor(newColor, id) {
     storageService.store(NOTES_KEY, notesDB);
 
     return Promise.resolve(notesDB);
+}
+
+function isPinnedNotes() {
+    return Promise.resolve(notesDB.some(note => note.isPinned));
 }
 
 function _filterNotes(filterBy) {

@@ -13,6 +13,7 @@ export default {
             <div class="flex space-between">
                 <span class="fas fa-list visible"></span>
                 <div class="toolbar">
+                    <span @click="pinNote" class="fas fa-thumbtack"></span>
                     <span @click="editNote" class="fas fa-edit"></span>
                     <span @click="removeNote" class="fas fa-trash-alt danger"></span>
                     <span @click="changeBkgColor" class="fas fa-palette info colors dropdown"></span>
@@ -51,16 +52,6 @@ export default {
             this.todos = todosTxt.join(',');
         },
         updateNote() {
-            this.$emit('update', this.id, this.newTodos, 'noteTodos')
-            this.isEdit = !this.isEdit;
-        },
-        changeBkgColor() {
-            this.isColorOpt = !this.isColorOpt;
-        },
-        changeColor(color) {
-            this.$emit('colorChange', color, this.id)
-        },
-        updateTodos() {
             let todosArr = this.todos.split(',');
             let todosObj = todosArr.map(todo => {
                 return { text: todo, doneAt: null }
@@ -71,8 +62,17 @@ export default {
             this.$emit('update', this.id, this.todos, 'noteTodos')
             this.isEdit = !this.isEdit;
         },
+        changeBkgColor() {
+            this.isColorOpt = !this.isColorOpt;
+        },
+        changeColor(color) {
+            this.$emit('colorChange', color, this.id)
+        },
         complete(todo) {
             console.log(todo)
+        },
+        pinNote() {
+            this.$emit('pin', this.id)
         }
     },
     components: {
