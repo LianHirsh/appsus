@@ -40,3 +40,26 @@ input[type="radio"] {
 :checked+span {
     color: black;
 }
+
+@media (max-width: 650px) {
+    .note-add {
+        padding: 10px 20px;
+        width: 100%;
+        margin: 0 auto 30px;
+    }
+    .note-add input {
+        line-height: 1em;
+        font-size: 0.8rem;
+    }
+    .icons span {
+        font-size: 0.9rem;
+        margin: 2px;
+    }
+    .add-title {
+        width: 50px;
+        padding: 5px 10px;
+    }
+    .add-lable {
+        width: 35px;
+    }
+}
