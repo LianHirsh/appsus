@@ -14,9 +14,10 @@
 }
 
 .router-link-active {
-    color: red;
+    color: #506D21;
 }
 
 .logo {
-    font-size: 1.3rem;
+    font-size: 2rem;
+    font-family: Inconsolata-bold;
 }
