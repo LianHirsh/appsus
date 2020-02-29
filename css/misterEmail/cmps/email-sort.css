@@ -1,3 +1,25 @@
 .sort {
     padding: 20px;
 }
+
+.sort-by-title,
+.sort-by-date {
+    padding: 5px 10px;
+    font-size: 1rem;
+    border-radius: 10px;
+    outline-width: 0;
+    border: 1px solid #506D21;
+    color: #506D21;
+    background-color: white;
+    transition: 0.3s;
+}
+
+.sort-by-title:hover,
+.sort-by-date:hover {
+    background-color: #506D21;
+    color: white;
+}
+
+.sort-title {
+    font-size: 1.2rem;
+}

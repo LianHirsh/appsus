@@ -34,15 +34,15 @@ export default {
             emailService.query(this.listType)
                 .then(emails => {
                     if (this.filterBy) {
-                        emailService.filterEmailsBySearch(this.filterBy)
+                        emailService.filterEmailsBySearch(this.filterBy, emails)
                             .then(filteredEmails => {
                                 this.emails = filteredEmails;
+                                this.isNoEmails = (this.emails.length === 0) ? true : false;
                             });
                     } else {
                         this.emails = emails;
+                        this.isNoEmails = (this.emails.length === 0) ? true : false;
                     }
-
-                    this.isNoEmails = (this.emails.length === 0) ? true : false;
                 });
         },
         changeReadStatus(emailId) {
