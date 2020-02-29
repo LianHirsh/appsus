@@ -1,3 +1,4 @@
+import noteColors from './note-colors.cmp.js';
 export default {
     template: `
         <section class="note-todos">
@@ -14,6 +15,7 @@ export default {
                 <div class="toolbar">
                     <span @click="editNote" class="fas fa-edit"></span>
                     <span @click="removeNote" class="fas fa-trash-alt danger"></span>
+                    <span @click="changeBkgColor" class="fas fa-palette info colors dropdown"></span>
                 </div>
             </div>
 
@@ -26,39 +28,54 @@ export default {
                 <button @click="updateNote">Update</button>
                 <button @click="editNote">Cancel</button>
             </section>
+            <note-colors v-if="isColorOpt" @colorChange="changeColor"></note-colors>
         </section>
     `,
-    props: ['info','id'],
+    props: ['info', 'id'],
     data() {
         return {
             isEdit: false,
-            todos: this.info.todos,
+            isColorOpt: false,
+            todos: this.info.todos
         }
     },
     methods: {
         removeNote() {
-            this.$emit('remove',this.id)
+            this.$emit('remove', this.id)
         },
         editNote() {
             this.isEdit = !this.isEdit;
-            let todosTxt = this.todos.map(todo=> {
+            let todosTxt = this.todos.map(todo => {
                 return todo.text
             });
             this.todos = todosTxt.join(',');
         },
         updateNote() {
+            this.$emit('update', this.id, this.newTodos, 'noteTodos')
+            this.isEdit = !this.isEdit;
+        },
+        changeBkgColor() {
+            this.isColorOpt = !this.isColorOpt;
+        },
+        changeColor(color) {
+            this.$emit('colorChange', color, this.id)
+        },
+        updateTodos() {
             let todosArr = this.todos.split(',');
-            let todosObj = todosArr.map(todo=> {
-               return { text: todo, doneAt: null}
+            let todosObj = todosArr.map(todo => {
+                return { text: todo, doneAt: null }
             });
 
             this.todos = todosObj;
-            
-            this.$emit('update',this.id, this.todos, 'noteTodos')
+
+            this.$emit('update', this.id, this.todos, 'noteTodos')
             this.isEdit = !this.isEdit;
         },
         complete(todo) {
             console.log(todo)
         }
+    },
+    components: {
+        noteColors
     }
 }

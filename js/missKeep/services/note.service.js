@@ -11,27 +11,31 @@ export const noteService = {
     removeNote,
     addNote,
     changePinnedStatus,
-    updateNote
+    updateNote,
+    changeBkgColor
 }
 
-function query() {
+function query(filterBy) {
     var notes = storageService.load(NOTES_KEY);
 
     if (!notes || notes.length === 0) {
         notes = _createNotes();
         storageService.store(NOTES_KEY, notes);
     }
+
     notesDB = notes;
 
-    // let sortedNotes = filterNotes(NoteType);
-    // return Promise.resolve(sortedEmails);
+    if (filterBy) {
+        const filter = filterBy.toLowerCase();
+        notes = _filterNotes(filter);
+    }
 
-    return Promise.resolve(notesDB);
+    return Promise.resolve(notes);
 }
 
 function updateNote(noteId, info, type) {
     var note = _findNote(noteId);
-    if(type === 'noteText') {
+    if (type === 'noteText') {
         note.info.text = info;
     } else if (type === 'noteImg') {
         note.info.url = info;
@@ -75,6 +79,67 @@ function changePinnedStatus(noteId) {
     note.isPinned = !note.isPinned;
     storageService.store(NOTES_KEY, notesDB);
     return Promise.resolve();
+}
+
+function changeBkgColor(newColor, id) {
+    let note = _findNote(id);
+
+    note.style.backgroundColor = newColor;
+
+    storageService.store(NOTES_KEY, notesDB);
+
+    return Promise.resolve(notesDB);
+}
+
+function _filterNotes(filterBy) {
+    if (filterBy === 'list') {
+        return Promise.resolve(_filter('noteTodos'));
+    } else if (filterBy === 'text') {
+        return Promise.resolve(_filter('noteText'));
+    } else if (filterBy === 'image') {
+        return Promise.resolve(_filter('noteImg'));
+    } else if (filterBy === 'video') {
+        return Promise.resolve(_filter('noteVideo'));
+    } else if (filterBy === 'all') {
+        return Promise.resolve(notesDB);
+    } else {
+        return Promise.resolve(_filterByText(filterBy));
+    }
+}
+
+function _filterByText(filterBy) {
+    return notesDB.filter(note => {
+        if (note.type === 'noteText') {
+            const text = note.info.text.toLowerCase();
+            return text.includes(filterBy);
+        } else if (note.type === 'noteImg') {
+            const imgUrl = note.info.url.toLowerCase();
+            return imgUrl.includes(filterBy);
+        } else if (note.type === 'noteVideo') {
+            const videoUrl = note.info.urlYouTubeId.toLowerCase();
+            return videoUrl.includes(filterBy) ||
+                'https://www.youtube.com/embed/'.includes(filterBy)
+        } else {
+            return _checkIfFilterIncludsInList(filterBy, note);
+        }
+    });
+}
+
+function _checkIfFilterIncludsInList(filterBy, note) {
+    let res = false;
+
+    note.info.todos.forEach(todo => {
+        const todoText = todo.text.toLowerCase();
+        if (todoText.includes(filterBy)) {
+            res = true;
+        }
+    });
+
+    return res;
+}
+
+function _filter(type) {
+    return notesDB.filter(note => note.type === type);
 }
 
 function _findNote(noteId) {

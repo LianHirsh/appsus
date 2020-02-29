@@ -1,7 +1,7 @@
 export default {
     template: `
         <section class="email-filter">
-            <input class="search-txt" type="text" placeholder="Search email" v-model="filterByText"
+            <input class="search-txt" type="text" placeholder="Search emails" v-model="filterByText"
             v-on:input="searchEmailByText">
             </input>
             <select class="filters" v-model="filterByRead" v-on:change="searchEmailByReadStatus">

@@ -4,10 +4,12 @@ import noteText from '../cmps/note-text.cmp.js';
 import noteImg from '../cmps/note-img.cmp.js';
 import noteVideo from '../cmps/note-video.cmp.js';
 import noteTodos from '../cmps/note-todos.cmp.js';
+import noteFilter from '../cmps/note-filter.cmp.js';
 
 export default {
     template: `
         <section class="note-app">
+            <note-filter @filterByText="filterNotes" @filterByType="filterNotes"></note-filter>
             <add-note></add-note>
 
             <h3 v-if="isPinnedNotes">Pinned Notes</h3>
@@ -34,7 +36,8 @@ export default {
                         :id="note.id"
                         @pin="pinNote"
                         @remove="removeNote"
-                        @update="updateNote">
+                        @update="updateNote"
+                        @colorChange="changeBkg">
                     </component>
                 </li>
             </ul>
@@ -43,17 +46,20 @@ export default {
     data() {
         return {
             notes: [],
+            filterBy: '',
             isPinnedNotes: false
         }
     },
     created() {
-        noteService.query()
-            .then(notes => {
-                console.log(notes);
-                this.notes = notes;
-            })
+        this.getNotes();
     },
     methods: {
+        getNotes() {
+            noteService.query(this.filterBy)
+                .then(notes => {
+                    this.notes = notes;
+                })
+        },
         removeNote(noteId) {
             noteService.removeNote(noteId)
         },
@@ -63,10 +69,20 @@ export default {
         updateNote(noteId, info, type) {
             noteService.updateNote(noteId, info, type)
         },
+        changeBkg(newColor, id) {
+            noteService.changeBkgColor(newColor, id)
+                .then(res => {
+                    this.notes = res;
+                });
+        },
+        filterNotes(filterBy) {
+            this.filterBy = filterBy;
+            this.getNotes();
+        },
         pinNote(noteId) {
             noteService.changePinnedStatus(noteId)
-                .then(()=> {
-                    this.isPinnedNotes = true
+                .then(() => {
+                    this.isPinnedNotes = true;
                 })
         }
     },
@@ -76,6 +92,7 @@ export default {
         noteText,
         noteImg,
         noteVideo,
-        noteTodos
+        noteTodos,
+        noteFilter
     }
 }

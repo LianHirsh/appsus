@@ -1,0 +1,14 @@
+.note-colors {
+    right: 0;
+    top: 30px;
+    padding-top: 7px;
+}
+
+.color {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid #eee;
+}
