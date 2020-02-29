@@ -1,0 +1,27 @@
+.notes-list {
+    list-style-type: none;
+    column-count: 4;
+    column-fill: auto;
+    margin: 0;
+    column-gap: 1em;
+    padding: 0px;
+    padding-bottom: 20px;
+}
+
+@media (max-width: 1200px) {
+    .notes-list {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 900px) {
+    .notes-list {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .notes-list {
+        column-count: 1;
+    }
+}

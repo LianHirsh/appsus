@@ -6,7 +6,7 @@ export default {
                 <p>{{info.text}}</p>
             </div>
             <div class="flex space-between">
-                <span class="fas fa-font visible"></span>
+                <span class="fas fa-font visible type"></span>
                 <div class="toolbar">
                     <span @click="pinNote" class="fas fa-thumbtack"></span>
                     <span @click="editNote" class="fas fa-edit"></span>
