@@ -202,6 +202,6 @@ function _createNote(noteDetailes) {
         type: noteDetailes.type,
         isPinned: false,
         info: noteDetailes.info,
-        style: noteDetailes.style
+        style: noteDetailes.style || { backgroundColor: '#80ED99' }
     }
 }
