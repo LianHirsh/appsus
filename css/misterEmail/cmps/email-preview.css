@@ -28,9 +28,7 @@
     align-items: center;
 }
 
-.trash-img,
-.extend-img,
-.read-img {
+.extend-img {
     width: 20px;
     height: 20px;
 }
@@ -55,9 +53,19 @@
 }
 
 .white-star {
-    font-size: 2rem;
+    font-size: 1.2rem;
 }
 
 .yellow-star {
     font-size: 1.2rem;
+    color: yellow;
+    text-shadow: 0 0 3px #000;
+}
+
+.envelope {
+    font-size: 1.3rem;
+}
+
+.trash {
+    font-size: 1.3rem;
 }

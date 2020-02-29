@@ -109,13 +109,13 @@ function getEmailById(emailId) {
     return Promise.resolve(mail);
 }
 
-function filterEmailsBySearch(filterBy) {
+function filterEmailsBySearch(filterBy, emails) {
     if (filterBy === 'Read') {
-        return Promise.resolve(_filterByRead());
+        return Promise.resolve(_filterByRead(emails));
     } else if (filterBy === 'Unread') {
-        return Promise.resolve(_filterByUnread());
+        return Promise.resolve(_filterByUnread(emails));
     } else if (filterBy === 'All') {
-        return Promise.resolve(emailsDB);
+        return Promise.resolve(emails);
     } else {
         return Promise.resolve(_filterByText(filterBy));
     }
@@ -183,12 +183,12 @@ function _sortByDate() {
     });
 }
 
-function _filterByRead() {
-    return emailsDB.filter(email => email.isRead)
+function _filterByRead(emails) {
+    return emails.filter(email => email.isRead)
 }
 
-function _filterByUnread() {
-    return emailsDB.filter(email => !email.isRead)
+function _filterByUnread(emails) {
+    return emails.filter(email => !email.isRead)
 }
 
 function _filterByText(filterBy) {

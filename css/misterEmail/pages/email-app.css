@@ -1,7 +1,7 @@
 .email-app {
     display: grid;
-    grid-template-columns: 20vw 30vw auto;
-    grid-template-rows: 5vw auto;
+    grid-template-columns: 20vw 40vw auto;
+    grid-template-rows: 8vw auto;
     height: 100vh;
 }
 

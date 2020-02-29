@@ -5,10 +5,11 @@ export default {
         <section class="email-preview" @click="changeEmailStatus" :class="readState" v-if="email">
             <div v-if="isCloseState" class="closeEmail">
                 <button class="star-email" @click.stop="$emit('stared', email.id)" 
-                :class="starClass">{{star}}
+                :class="starClass">
+                    <span class="fas fa-star"></span>
                 </button>
                 <button class="read-email" @click.stop="$emit('read', email.id)">
-                    <img class="read-img" src="imgs/read.png"/>
+                    <span :class="envelope"></span>   
                 </button>
                 <h2 class="from">{{email.from.name}}</h2>
                 <h3 class="subject">{{email.subject}}</h3>
@@ -21,10 +22,12 @@ export default {
                         <img class="extend-img" src="imgs/extend.png"/>
                     </router-link>
                     <button class="delete-email" @click="$emit('removed', email.id)">
-                        <img class="trash-img" src="imgs/trash.jpg"/>
+                        <span class="far fa-trash-alt trash"></span>
                     </button>
                     <button class="star-email" @click.stop="$emit('stared', email.id)" 
-                    :class="starClass">{{star}}</button>
+                    :class="starClass">
+                        <span class="fas fa-star"></span>
+                    </button>
                 </div>
                 <div class="mail-info">
                     <h2 class="from">{{email.from.name}}</h2>
@@ -58,18 +61,18 @@ export default {
                 return 'notRead';
             }
         },
-        star() {
-            if (this.email.isStar) {
-                return '⭐';
-            } else {
-                return '✰';
-            }
-        },
         starClass() {
             if (this.email.isStar) {
                 return 'yellow-star';
             } else {
                 return 'white-star';
+            }
+        },
+        envelope() {
+            if (this.email.isRead) {
+                return 'far fa-envelope-open envelope';
+            } else {
+                return 'far fa-envelope envelope';
             }
         }
     },
