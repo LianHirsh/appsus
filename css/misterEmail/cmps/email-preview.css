@@ -62,10 +62,13 @@
     text-shadow: 0 0 3px #000;
 }
 
-.envelope {
-    font-size: 1.3rem;
-}
-
+.envelope,
 .trash {
     font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.star {
+    font-size: 1.2rem;
+    cursor: pointer;
 }

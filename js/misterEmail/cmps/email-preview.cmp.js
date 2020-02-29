@@ -6,7 +6,7 @@ export default {
             <div v-if="isCloseState" class="closeEmail">
                 <button class="star-email" @click.stop="$emit('stared', email.id)" 
                 :class="starClass">
-                    <span class="fas fa-star"></span>
+                    <span class="fas fa-star star"></span>
                 </button>
                 <button class="read-email" @click.stop="$emit('read', email.id)">
                     <span :class="envelope"></span>   
@@ -26,7 +26,7 @@ export default {
                     </button>
                     <button class="star-email" @click.stop="$emit('stared', email.id)" 
                     :class="starClass">
-                        <span class="fas fa-star"></span>
+                        <span class="fas fa-star star"></span>
                     </button>
                 </div>
                 <div class="mail-info">

@@ -1,11 +1,3 @@
-.clock-img,
-.paper-img,
-.sent-img,
-.reply-img {
-    width: 20px;
-    height: 20px;
-}
-
 .snoozed-email,
 .draft-email,
 .sent-email,
@@ -15,4 +7,47 @@
     margin: 0;
     padding: 0;
     outline-width: 0;
+}
+
+.trash,
+.reply,
+.clock,
+.file {
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.details-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.details-buttons button {
+    margin-right: 10px;
+}
+
+.details-buttons button:hover {
+    color: #506D21;
+}
+
+.details-subject {
+    margin: 0;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+}
+
+.email-from h3 {
+    margin: 0;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+.email-from {
+    display: flex;
+}
+
+.email-from-address {
+    color: grey;
+    font-size: 1rem;
+    font-weight: normal;
 }
