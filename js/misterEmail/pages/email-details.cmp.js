@@ -4,24 +4,26 @@ import { emailService } from '../../misterEmail/services/email.service.js';
 export default {
     template: `
         <section class="email-details" v-if="email">
-            <div class="preview-buttons">
+            <div class="details-buttons">
                 <button class="delete-email" @click="removeEmail" title="Delete email">
-                    <img class="trash-img" src="imgs/trash.jpg"/>
+                    <span class="far fa-trash-alt trash"></span>
                 </button>
                 <button class="snoozed-email" @click="changeSnoozedStatus" 
                 title="To further treatment">
-                    <img class="clock-img" src="imgs/clock.png"/>
+                    <span class="far fa-clock clock"></span>
                 </button>
                 <button class="draft-email" @click="changeDraftStatus" title="To draft email">
-                    <img class="paper-img" src="imgs/paper.png"/>
+                    <span class="far fa-file file"></span>
                 </button>
                 <button class="reply-email" @click="replyEmail" title="Reply">
-                    <img class="reply-img" src="imgs/reply.png"/>
+                    <span class="fas fa-share-square reply"></span>
                 </button>
             </div>
-            <h2>{{email.subject}}</h2>
-            <h3>{{email.from.name}}</h3>
-            <h3>{{email.from.address}}</h3>
+            <h2 class="details-subject">{{email.subject}}</h2>
+            <div class="email-from">
+                <h3 class="email-from-name">{{email.from.name}}</h3>
+                <h3 class="email-from-address"><{{email.from.address}}></h3>
+            </div>
             <div>{{email.body}}</div>
         </section>
     `,
