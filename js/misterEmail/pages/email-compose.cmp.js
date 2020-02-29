@@ -21,7 +21,7 @@ export default {
                 <button class="send">Send</button>
             </form>
         </div>
-            <button class="remove" @click="removeEmail"><img class="remove-img" src="./imgs/trash.jpg"></button>
+            <button class="remove" @click="removeEmail"><span class="far fa-trash-alt trash"></span></button>
     
     </section>
     `,

@@ -10,21 +10,28 @@ textarea[name=body] {
 .form-msg textarea {
     height: 200px;
     outline-width: 0;
+    padding: 15px;
+    /* border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px; */
 }
 
 .form-msg * {
-    width: 200px;
-    width: 800px;
+    width: 100%;
 }
 
 .form-title {
     background-color: black;
     color: white;
     padding: 10px;
+    font-weight: bold;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .send {
     color: white;
+    border: 1px solid #506D21;
+    background-color: #506D21;
     cursor: pointer;
     align-self: flex-start;
     height: 40px;
@@ -34,11 +41,7 @@ textarea[name=body] {
     bottom: 45px;
     margin-left: 15px;
     font-size: 14px;
-}
-
-.remove-img {
-    width: 30px;
-    height: 30px;
+    font-size: 17px;
 }
 
 .remove {
@@ -46,7 +49,11 @@ textarea[name=body] {
     border: none;
     align-self: flex-start;
     position: relative;
-    left: 750px;
+    left: 900px;
     bottom: 77px;
     cursor: pointer;
+}
+
+.remove span {
+    font-size: 30px;
 }
