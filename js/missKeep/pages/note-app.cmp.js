@@ -15,6 +15,7 @@ export default {
             @update="updateNote"
             @changeBkg="changeColorBkg">
             </note-list>
+            
             <h3 v-if="isPinnedNotes && unPinnedNotes.length !== 0">Other Notes</h3>
             <note-list :notes="unPinnedNotes"
             @pin="pinNote" 
