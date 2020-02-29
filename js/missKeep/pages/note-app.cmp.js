@@ -1,46 +1,27 @@
 import { noteService } from '../services/note.service.js';
 import addNote from '../cmps/note-add.cmp.js';
-import noteText from '../cmps/note-text.cmp.js';
-import noteImg from '../cmps/note-img.cmp.js';
-import noteVideo from '../cmps/note-video.cmp.js';
-import noteTodos from '../cmps/note-todos.cmp.js';
 import noteFilter from '../cmps/note-filter.cmp.js';
+import noteList from '../cmps/note-list.cmp.js';
 
 export default {
     template: `
         <section class="note-app">
             <note-filter @filterByText="filterNotes" @filterByType="filterNotes"></note-filter>
             <add-note></add-note>
-
             <h3 v-if="isPinnedNotes">Pinned Notes</h3>
-
-            <ul class="pinned-notes notes-list">
-                <li v-for="(note, idx) in notes" v-if="note.isPinned" class="note" :style="bkg(note)">
-                    <component 
-                        :is="note.type" 
-                        :info="note.info"
-                        :id="note.id"
-                        @pin="pinNote"
-                        @remove="removeNote"
-                        @update="updateNote">
-                    </component>
-                </li>
-            </ul>
-
-            <h3 v-if="isPinnedNotes">Other Notes</h3>
-            <ul class="notes-list">
-                <li v-for="(note, idx) in notes" v-if="!note.isPinned" class="note" :style="bkg(note)">
-                    <component 
-                        :is="note.type" 
-                        :info="note.info"
-                        :id="note.id"
-                        @pin="pinNote"
-                        @remove="removeNote"
-                        @update="updateNote"
-                        @colorChange="changeBkg">
-                    </component>
-                </li>
-            </ul>
+            <note-list v-if="isPinnedNotes" :notes="pinnedNotes" 
+            @pin="pinNote" 
+            @remove="removeNote"
+            @update="updateNote"
+            @changeBkg="changeColorBkg">
+            </note-list>
+            <h3 v-if="isPinnedNotes && unPinnedNotes.length !== 0">Other Notes</h3>
+            <note-list :notes="unPinnedNotes"
+            @pin="pinNote" 
+            @remove="removeNote"
+            @update="updateNote"
+            @changeBkg="changeColorBkg">
+            </note-list>
         </section>
     `,
     data() {
@@ -50,8 +31,19 @@ export default {
             isPinnedNotes: false
         }
     },
+    computed: {
+        pinnedNotes() {
+            if (this.isPinnedNotes) {
+                return this.filterByPinned(true);
+            }
+        },
+        unPinnedNotes() {
+            return this.filterByPinned(false);
+        }
+    },
     created() {
         this.getNotes();
+        this.getUpdateNotes();
     },
     methods: {
         getNotes() {
@@ -63,13 +55,11 @@ export default {
         removeNote(noteId) {
             noteService.removeNote(noteId)
         },
-        bkg(note) {
-            return `background-color: ${note.style.backgroundColor}`;
-        },
         updateNote(noteId, info, type) {
+            console.log(noteId, info, type)
             noteService.updateNote(noteId, info, type)
         },
-        changeBkg(newColor, id) {
+        changeColorBkg(newColor, id) {
             noteService.changeBkgColor(newColor, id)
                 .then(res => {
                     this.notes = res;
@@ -82,17 +72,23 @@ export default {
         pinNote(noteId) {
             noteService.changePinnedStatus(noteId)
                 .then(() => {
-                    this.isPinnedNotes = true;
+                    this.getUpdateNotes();
                 })
+        },
+        getUpdateNotes() {
+            noteService.isPinnedNotes()
+                .then(res => {
+                    this.isPinnedNotes = res;
+                });
+        },
+        filterByPinned(isPinned) {
+            return this.notes.filter(note => note.isPinned === isPinned);
         }
     },
     components: {
         addNote,
         noteService,
-        noteText,
-        noteImg,
-        noteVideo,
-        noteTodos,
-        noteFilter
+        noteFilter,
+        noteList
     }
 }
