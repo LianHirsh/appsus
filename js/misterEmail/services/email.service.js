@@ -213,7 +213,7 @@ function _filterByText(filterBy) {
 
 function _createEmails() {
     let emails = [
-        { from: { name: 'Lian', address: 'lian@gmail.com' }, cc: 'ella@gmail.com', subject: 'aWassap?', body: 'Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book.', sentAt: 1582897777777 },
+        { from: { name: 'Lian', address: 'lian@gmail.com' }, cc: 'ella@gmail.com', subject: 'aWassap?', body: 'Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in.', sentAt: 1582897777777 },
         { from: { name: 'Ella', address: 'ella@gmail.com' }, cc: 'ella@gmail.com', subject: 'Wassap?', body: 'lorem Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book.', sentAt: 1582892340282 },
         { from: { name: 'Lian', address: 'lian@gmail.com' }, cc: 'ella@gmail.com', subject: 'aWassap?', body: 'Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book.', sentAt: 1582892555555 }
 

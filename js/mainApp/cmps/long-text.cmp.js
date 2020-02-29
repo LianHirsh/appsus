@@ -8,11 +8,6 @@ export default {
     </section>
     `,
     props: ['txt', 'isCloseState'],
-    data() {
-        return {
-
-        }
-    },
     computed: {
         txtClass() {
             if (this.isCloseState) {

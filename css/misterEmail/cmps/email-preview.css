@@ -1,16 +1,22 @@
+.email-preview {
+    display: flex;
+    position: relative;
+    margin-bottom: 20px;
+    border-bottom: 1px solid lightslategray;
+}
+
 .closeEmail {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .openEmail {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: row-reverse;
 }
 
-.from,
-.subject {
+.from {
     margin: 0;
     margin-right: 30px;
 }
@@ -21,6 +27,8 @@
 
 .subject {
     font-size: 1rem;
+    margin: 0;
+    margin-right: 5px;
 }
 
 .preview-buttons {
@@ -42,6 +50,8 @@
     margin: 0;
     padding: 0;
     outline-width: 0;
+    height: 20px;
+    margin-left: 5px;
 }
 
 .read {

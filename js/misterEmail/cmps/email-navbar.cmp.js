@@ -3,6 +3,7 @@ import emailStatus from '../cmps/email-status.cmp.js';
 export default {
     template: `
     <section class="side-navbar">
+    <button class="toggle-menu">☰</button>
          <nav class="flex column">
             <router-link to="/emailApp/compose" class="compose" exact>
                 <span class="fas fa-plus"></span>
@@ -28,8 +29,9 @@ export default {
             <router-link to="/emailApp/emailList/drafts" exact>
                 <span class="far fa-file"></span>
                 Drafts
-            </router-link>
+            </router-link> 
         </nav>
+
     </section>
     `,
     components: {

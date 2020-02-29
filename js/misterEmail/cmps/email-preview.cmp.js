@@ -4,6 +4,10 @@ export default {
     template: `
         <section class="email-preview" @click="changeEmailStatus" :class="readState" v-if="email">
             <div v-if="isCloseState" class="closeEmail">
+                <h2 class="from">{{email.from.name}}</h2>
+                <h3 class="subject">{{email.subject}}</h3>
+                <long-text :txt="email.body" :isCloseState="isCloseState"></long-text>
+                <div class="sent-at">{{sentAt}}</div>
                 <button class="star-email" @click.stop="$emit('stared', email.id)" 
                 :class="starClass">
                     <span class="fas fa-star star"></span>
@@ -11,10 +15,6 @@ export default {
                 <button class="read-email" @click.stop="$emit('read', email.id)">
                     <span :class="envelope"></span>   
                 </button>
-                <h2 class="from">{{email.from.name}}</h2>
-                <h3 class="subject">{{email.subject}}</h3>
-                <long-text :txt="email.body" :isCloseState="isCloseState"></long-text>
-                <div class="sent-at">{{sentAt}}</div>
             </div>
             <div v-else class="openEmail">
                 <div class="preview-buttons">
