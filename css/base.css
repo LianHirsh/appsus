@@ -1,6 +1,5 @@
 @import './missKeep/cmps/note-img.css';
 @import './missKeep/cmps/note-todos.css';
-@import './missKeep/cmps/note-txt.css';
 @import './missKeep/cmps/note-video.css';
 @import './missKeep/cmps/note-add.css';
 @import './missKeep/cmps/note-list.css';
@@ -31,6 +30,7 @@ html {
     font-family: Lato;
 }
 
+
 /* typography */
 
 @font-face {
@@ -48,6 +48,7 @@ html {
     src: url(../fonts/Lato/Lato-Regular.ttf)
 }
 
+
 /* layout */
 
 .container {
@@ -62,6 +63,7 @@ footer {
     color: white;
     font-size: 1.2rem;
 }
+
 
 /* helpers */
 

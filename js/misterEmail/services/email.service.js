@@ -212,10 +212,64 @@ function _filterByText(filterBy) {
 }
 
 function _createEmails() {
-    let emails = [
-        { from: { name: 'Lian', address: 'lian@gmail.com' }, cc: 'ella@gmail.com', subject: 'aWassap?', body: 'Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in.', sentAt: 1582897777777 },
-        { from: { name: 'Ella', address: 'ella@gmail.com' }, cc: 'ella@gmail.com', subject: 'Wassap?', body: 'lorem Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book.', sentAt: 1582892340282 },
-        { from: { name: 'Lian', address: 'lian@gmail.com' }, cc: 'ella@gmail.com', subject: 'aWassap?', body: 'Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book.', sentAt: 1582892555555 }
+    let emails = [{
+            from: { name: 'Lian', address: 'lian@gmail.com' },
+            cc: 'ella@gmail.com',
+            subject: 'Thanks for everything!!!!!!',
+            body: `My money's in that office, right?
+            If she start giving me some bullshit about it ain't there, and we got to go someplace else and get it, I'm gonna shoot you in the head then and there. Then I'm gonna shoot that bitch in the kneecaps, find out where my goddamn money is.
+            She gonna tell me too. Hey, look at me when I'm talking to you, motherfucker. You listen: we go in there, and that nigga Winston or anybody else is in there, you the first motherfucker to get shot. You understand?`,
+            sentAt: 1582897777777
+        },
+        {
+            from: { name: 'yossi', address: 'yossi@gmail.com' },
+            cc: 'dudu@gmail.com',
+            subject: 'Hi you!',
+            body: 'Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in.',
+            sentAt: 1588887777777
+        },
+        {
+            from: { name: 'Ella', address: 'ella@gmail.com' },
+            cc: 'or@gmail.com',
+            subject: 'Wassap?',
+            body: `lorem Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs.
+            The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Ciceros De Finibus Bonorum et Malorum for use in a type specimen book.`,
+            sentAt: 1582892340282
+        },
+        {
+            from: { name: 'nini', address: 'nini@gmail.com' },
+            cc: 'shimi@gmail.com',
+            subject: 'GoodJob!!!!!',
+            body: `My money's in that office, right?
+            If she start giving me some bullshit about it ain't there, and we got to go someplace else and get it, I'm gonna shoot you in the head then and there. Then I'm gonna shoot that bitch in the kneecaps, find out where my goddamn money is.
+            She gonna tell me too. Hey, look at me when I'm talking to you, motherfucker. You listen: we go in there, and that nigga Winston or anybody else is in there, you the first motherfucker to get shot. You understand?`,
+            sentAt: 1582892555555
+        },
+        {
+            from: { name: 'may', address: 'may@gmail.com' },
+            cc: 'lian@gmail.com',
+            subject: 'How Are You??',
+            body: `Hi! this would be ou email`,
+            sentAt: 1582492555555
+        },
+        {
+            from: { name: 'or', address: 'or@gmail.com' },
+            cc: 'ella@gmail.com',
+            subject: 'I love you',
+            body: `very very very very much`,
+            sentAt: 1533492555555
+        },
+        {
+            from: { name: 'sapir', address: 'sapir@gmail.com' },
+            cc: 'yoyo@gmail.com',
+            subject: 'Your card has arrived',
+            body: `Do you see any Teletubbies in here?
+            Do you see a slender plastic tag clipped to my shirt with my name printed on it?
+            Do you see a little Asian child with a blank expression on his face sitting
+            outside on a mechanical helicopter that shakes when you put quarters in it?
+            No? Well, that's what you see at a toy store.`,
+            sentAt: 1533492444455
+        }
 
     ].map(_createEmail)
 
