@@ -15,7 +15,8 @@ export default {
                 @pin="pinNote"
                 @remove="removeNote"
                 @update="updateNote"
-                @colorChange="chngeBkgColor">
+                @colorChange="chngeBkgColor"
+                @complete="completeTodo">
                 </component>
             </li>
         </ul>
@@ -37,8 +38,10 @@ export default {
         },
         pinNote(noteId) {
             this.$emit('pin', noteId);
+        },
+        completeTodo(todoIdx, noteId) {
+            this.$emit('complete', noteId, todoIdx);
         }
-
     },
     components: {
         noteText,

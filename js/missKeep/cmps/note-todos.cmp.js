@@ -5,8 +5,8 @@ export default {
             <div class="note-todos-content"> 
                 <div class="todos">
                     <h3>{{info.label}}</h3>
-                    <div class="todo" v-for="todo in info.todos">
-                        <p @click="$event.target.classList.toggle('done') ; complete(todo)">{{todo.text}}</p>
+                    <div class="todo" v-for="(todo, idx) in info.todos">
+                        <p @click="$event.target.classList.toggle('done') ; complete(idx)">{{todo.text}}</p>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@ export default {
         return {
             isEdit: false,
             isColorOpt: false,
-            todos: this.info.todos
+            todos: this.info.todos,
         }
     },
     methods: {
@@ -68,12 +68,29 @@ export default {
         changeColor(color) {
             this.$emit('colorChange', color, this.id)
         },
-        complete(todo) {
-            console.log(todo)
+        complete(todoIdx) {
+            this.$emit('complete', this.id, todoIdx);
         },
         pinNote() {
-            this.$emit('pin', this.id)
+            this.$emit('pin', this.id);
+        },
+        padTime(time) {
+            return (time < 10) ? '0' + time : time;
+        },
+        doneAt(time) {
+            this.doneAt = time;
+            this.doneAtTime;
         }
+    },
+    computed: {
+        // doneAtTime() {
+        //     let time = new Date(this.doneAt);
+        //     const hours = this.padTime(time.getHours());
+        //     const minutes = this.padTime(time.getMinutes());
+        //     time = `${hours}:${minutes}`;
+
+        //     return time;
+        // }
     },
     components: {
         noteColors
