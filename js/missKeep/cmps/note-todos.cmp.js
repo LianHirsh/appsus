@@ -2,11 +2,12 @@ import noteColors from './note-colors.cmp.js';
 export default {
     template: `
         <section class="note-todos">
+            <span v-if="isPinned" class="fas fa-thumbtack pinnedNote"></span>
             <div class="note-todos-content"> 
                 <div class="todos">
                     <h3>{{info.label}}</h3>
                     <div class="todo" v-for="todo in info.todos">
-                        <p @click="$event.target.classList.toggle('done') ; complete(todo)">{{todo.text}}</p>
+                        <p @click="$event.target.classList.toggle('done')">{{todo.text}}</p>
                     </div>
                 </div>
             </div>
@@ -20,24 +21,27 @@ export default {
                 </div>
             </div>
 
-            <section v-if="isEdit">
+            <section v-if="isEdit" class="edit-note">
                 <input
-                v-model="todos"
+                v-model="todosTxt"
                 type="text"
                 autocomplete=off
                 />
-                <button @click="updateNote">Update</button>
-                <button @click="editNote">Cancel</button>
+                <div>
+                    <button @click="updateNote">Update</button>
+                    <button @click="editNote">Cancel</button>
+                <div>
             </section>
             <note-colors v-if="isColorOpt" @colorChange="changeColor"></note-colors>
         </section>
     `,
-    props: ['info', 'id'],
+    props: ['info', 'id', 'isPinned'],
     data() {
         return {
             isEdit: false,
             isColorOpt: false,
-            todos: this.info.todos
+            todos: this.info.todos,
+            todosTxt: ''
         }
     },
     methods: {
@@ -46,13 +50,15 @@ export default {
         },
         editNote() {
             this.isEdit = !this.isEdit;
-            let todosTxt = this.todos.map(todo => {
-                return todo.text
-            });
-            this.todos = todosTxt.join(',');
+            if (this.isEdit) {
+                this.todosTxt = this.todos.map(todo => {
+                    return todo.text
+                });
+                this.todosTxt = this.todosTxt.join(',');
+            }
         },
         updateNote() {
-            let todosArr = this.todos.split(',');
+            let todosArr = this.todosTxt.split(',');
             let todosObj = todosArr.map(todo => {
                 return { text: todo, doneAt: null }
             });
@@ -67,9 +73,6 @@ export default {
         },
         changeColor(color) {
             this.$emit('colorChange', color, this.id)
-        },
-        complete(todo) {
-            console.log(todo)
         },
         pinNote() {
             this.$emit('pin', this.id)

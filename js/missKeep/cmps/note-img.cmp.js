@@ -2,6 +2,7 @@ import noteColors from './note-colors.cmp.js';
 export default {
     template: `
         <section class="note-img">
+            <span v-if="isPinned" class="fas fa-thumbtack pinnedNote"></span>
             <div class="note-img-content"> 
                 <img :src="info.url" :title="info.title"/>
             </div>
@@ -15,19 +16,21 @@ export default {
                 </div>
             </div>
 
-            <section v-if="isEdit">
+            <section v-if="isEdit" class="edit-note">
                 <input
                 v-model="newUrl"
                 type="text"
                 autocomplete=off
                 />
-                <button @click="updateNote">Update</button>
-                <button @click="editNote">Cancel</button>
+                <div>
+                    <button @click="updateNote">Update</button>
+                    <button @click="editNote">Cancel</button>
+                </div>
             </section>
             <note-colors v-if="isColorOpt" @colorChange="changeColor"></note-colors>
         </section>
     `,
-    props: ['info', 'id'],
+    props: ['info', 'id', 'isPinned'],
     data() {
         return {
             isEdit: false,

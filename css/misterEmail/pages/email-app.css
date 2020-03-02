@@ -2,7 +2,7 @@
             display: grid;
             grid-template-columns: 20vw 40vw auto;
             grid-template-rows: 8vw auto;
-            height: 100vh;
+            min-height: 100vh;
         }
         
         .sidebar {
@@ -29,7 +29,13 @@
             display: none;
         }
         
-        @media (max-width:940px) {
+        @media (max-width:1020px) {
+            .email-app {
+                grid-template-columns: 20vw 50vw auto;
+            }
+        }
+        
+        @media (max-width:800px) {
             .email-app {
                 display: flex;
                 flex-direction: column;

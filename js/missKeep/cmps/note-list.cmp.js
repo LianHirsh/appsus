@@ -12,6 +12,7 @@ export default {
                 :is="note.type" 
                 :info="note.info"
                 :id="note.id"
+                :isPinned="note.isPinned"
                 @pin="pinNote"
                 @remove="removeNote"
                 @update="updateNote"

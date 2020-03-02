@@ -1,3 +1,26 @@
 .note-filter {
-    margin-bottom: 30px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.note-filter .search-txt,
+.note-filter .filters {
+    border: solid rgba(0, 0, 0, .1);
+    font-size: 0.9rem;
+    color: grey;
+}
+
+@media (max-width: 650px) {
+    .note-filter {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .note-filter .search-txt {
+        width: 50%;
+        margin-bottom: 15px;
+    }
+    .note-filter .filters {
+        width: 20%;
+    }
 }

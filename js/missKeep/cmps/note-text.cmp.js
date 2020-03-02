@@ -2,8 +2,9 @@ import noteColors from './note-colors.cmp.js';
 export default {
     template: `
         <section class="note-text">
+        <span v-if="isPinned" class="fas fa-thumbtack pinnedNote"></span>
             <div v-if="info" class="note-text-content">
-                <p>{{info.text}}</p>
+                <p class="text-info">{{info.text}}</p>
             </div>
             <div class="flex space-between">
                 <span class="fas fa-font visible type"></span>
@@ -14,23 +15,26 @@ export default {
                     <span @click="changeBkgColor" class="fas fa-palette info colors dropdown"></span>
                 </div>
             </div>
-            <section v-if="isEdit">
+            <section v-if="isEdit" class="edit-note">
                 <input
                 v-model="newText"
                 type="text"
                 autocomplete=off/>
-                <button @click="updateNote">Update</button>
-                <button @click="editNote">Cancel</button>
+                <div> 
+                    <button @click="updateNote">Update</button>
+                    <button @click="editNote">Cancel</button>
+                </div>
             </section>
             <note-colors v-if="isColorOpt" @colorChange="changeColor"></note-colors>
         </section>
     `,
-    props: ['info', 'id'],
+    props: ['info', 'id', 'isPinned'],
     data() {
         return {
             isEdit: false,
             newText: this.info.text,
-            isColorOpt: false
+            isColorOpt: false,
+            isPinned: this.info.isPinned
         }
     },
     methods: {
@@ -51,6 +55,7 @@ export default {
             this.$emit('colorChange', color, this.id)
         },
         pinNote() {
+
             this.$emit('pin', this.id)
         }
     },

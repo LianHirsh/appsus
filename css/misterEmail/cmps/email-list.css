@@ -1,6 +1,18 @@
 .list-preview {
     list-style-type: none;
-    width: 100%;
+    width: 80%;
     margin: auto;
-    padding: 20px;
+}
+
+@media (max-width:1020px) {
+    .list-preview {
+        width: 80%;
+        margin-top: 40px;
+    }
+}
+
+@media (max-width:670px) {
+    .list-preview {
+        width: 100%;
+    }
 }

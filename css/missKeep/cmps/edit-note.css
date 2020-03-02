@@ -1,0 +1,29 @@
+.edit-note {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.edit-note input {
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 0.3rem;
+    outline-width: 0;
+    border: solid rgba(0, 0, 0, .1);
+}
+
+.edit-note button {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 0.3rem;
+    outline-width: 0;
+    background-color: rgb(224, 220, 220);
+    border: none;
+    cursor: pointer;
+    margin-left: 6px;
+    transition: 0.2s;
+}
+
+.edit-note button:hover {
+    background-color: white;
+}

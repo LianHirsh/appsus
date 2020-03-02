@@ -1,3 +1,15 @@
 .done {
     text-decoration: line-through;
 }
+
+.todos {
+    margin-left: 15px;
+}
+
+.todos h3 {
+    cursor: default;
+}
+
+.note-todos-content .todo {
+    margin-left: 10px;
+}

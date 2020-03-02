@@ -6,8 +6,8 @@ import noteList from '../cmps/note-list.cmp.js';
 export default {
     template: `
         <section class="note-app">
-            <note-filter @filterByText="filterNotes" @filterByType="filterNotes"></note-filter>
             <add-note></add-note>
+            <note-filter @filterByText="filterNotes" @filterByType="filterNotes"></note-filter>
             <h3 v-if="isPinnedNotes">Pinned Notes</h3>
             <note-list v-if="isPinnedNotes" :notes="pinnedNotes" 
             @pin="pinNote" 
@@ -57,7 +57,6 @@ export default {
             noteService.removeNote(noteId)
         },
         updateNote(noteId, info, type) {
-            console.log(noteId, info, type)
             noteService.updateNote(noteId, info, type)
         },
         changeColorBkg(newColor, id) {

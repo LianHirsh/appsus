@@ -29,19 +29,28 @@ textarea[name=body] {
 }
 
 .send {
-    color: white;
-    border: 1px solid #506D21;
-    background-color: #506D21;
-    cursor: pointer;
     align-self: flex-start;
     height: 40px;
     width: 90px;
-    border-radius: 0.2rem;
     position: relative;
     bottom: 45px;
     margin-left: 15px;
-    font-size: 14px;
-    font-size: 17px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    border-radius: 4px;
+    outline-width: 0;
+    transition: 0.3s;
+    background-color: #506D21;
+    border: 1px solid #506D21;
+    color: white;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.send:hover {
+    background-color: white;
+    color: #506D21;
+    border: 1px solid #506D21;
 }
 
 .remove {

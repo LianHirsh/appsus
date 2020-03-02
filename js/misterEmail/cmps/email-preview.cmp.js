@@ -3,38 +3,34 @@ import longText from '../../mainApp/cmps/long-text.cmp.js';
 export default {
     template: `
         <section class="email-preview" @click="changeEmailStatus" :class="readState" v-if="email">
-            <div v-if="isCloseState" class="closeEmail">
-                <h2 class="from">{{email.from.name}}</h2>
-                <h3 class="subject">{{email.subject}}</h3>
-                <long-text :txt="email.body" :isCloseState="isCloseState"></long-text>
+            <div class="close-email flex">
+                <div class="data flex">
+                    <button class="star-email" @click.stop="$emit('stared', email.id)" 
+                    :class="starClass">
+                        <span class="fas fa-star star"></span>
+                    </button>
+                    <h2 class="from">{{email.from.name}}</h2>
+                    <h3 class="subject">{{email.subject}}</h3>
+                </div>
+                <div class="flex">
                 <div class="sent-at">{{sentAt}}</div>
-                <button class="star-email" @click.stop="$emit('stared', email.id)" 
-                :class="starClass">
-                    <span class="fas fa-star star"></span>
-                </button>
-                <button class="read-email" @click.stop="$emit('read', email.id)">
-                    <span :class="envelope"></span>   
-                </button>
+                    <button class="read-email" @click.stop="$emit('read', email.id)">
+                        <span :class="envelope"></span>   
+                    </button>
+                </div>
             </div>
-            <div v-else class="openEmail">
+            <div v-if="!isCloseState" class="open-email flex">
                 <div class="preview-buttons">
-                    <router-link class="open-email" :to="'/emailApp/'+email.id">
+                    <router-link class="open-email-btn" :to="'/emailApp/'+email.id">
                         <img class="extend-img" src="imgs/extend.png"/>
                     </router-link>
                     <button class="delete-email" @click="$emit('removed', email.id)">
                         <span class="far fa-trash-alt trash"></span>
                     </button>
-                    <button class="star-email" @click.stop="$emit('stared', email.id)" 
-                    :class="starClass">
-                        <span class="fas fa-star star"></span>
-                    </button>
                 </div>
                 <div class="mail-info">
-                    <h2 class="from">{{email.from.name}}</h2>
-                    <h3 class="address">{{email.from.address}}</h3>
-                    <h3 class="subject">{{email.subject}}</h3>
-                    <long-text :txt="email.body" :isCloseState="isCloseState"></long-text>
-                    <div class="sent-at">{{sentAt}}</div>
+                    <h3 class="address">{{emailAddress}}</h3>
+                    <long-text :txt="email.body" :isCloseState="!isCloseState"></long-text>
                 </div>
             </div>  
         </section>
@@ -58,7 +54,7 @@ export default {
             if (this.email.isRead) {
                 return 'read';
             } else {
-                return 'notRead';
+                return 'not-read';
             }
         },
         starClass() {
@@ -74,6 +70,9 @@ export default {
             } else {
                 return 'far fa-envelope envelope';
             }
+        },
+        emailAddress() {
+            return `<${this.email.from.address}>`
         }
     },
     methods: {

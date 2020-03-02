@@ -2,6 +2,7 @@ import noteColors from './note-colors.cmp.js';
 export default {
     template: `
         <section class="note-video">
+            <span v-if="isPinned" class="fas fa-thumbtack pinnedNote"></span>
             <div class="note-video-content">
                 <iframe class="video" :title="info.title" :src="'https://www.youtube.com/embed/'+info.urlYouTubeId">
                 </iframe>
@@ -16,19 +17,21 @@ export default {
                 </div>
             </div>
 
-            <section v-if="isEdit">
+            <section v-if="isEdit" class="edit-note">
                 <input
                 v-model="newUrlYouTubeId"
                 type="text"
                 autocomplete=off
                 />
-                <button @click="updateNote">Update</button>
-                <button @click="editNote">Cancel</button>
+                <div>
+                    <button @click="updateNote">Update</button>
+                    <button @click="editNote">Cancel</button>
+                </div>
             </section>
             <note-colors v-if="isColorOpt"  @colorChange="changeColor"></note-colors>
         </section>
     `,
-    props: ['info', 'id'],
+    props: ['info', 'id', 'isPinned'],
     data() {
         return {
             isEdit: false,

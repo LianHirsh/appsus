@@ -1,8 +1,7 @@
 .note-add {
     padding: 10px 20px;
-    width: 600px;
     margin: 0 auto 30px;
-    max-width: 100%;
+    max-width: 70%;
     border: solid rgba(0, 0, 0, .1);
     border-radius: 0.3rem;
     background-color: white;
@@ -44,22 +43,9 @@ input[type="radio"] {
 @media (max-width: 650px) {
     .note-add {
         padding: 10px 20px;
-        width: 100%;
+        width: 80%;
         margin: 0 auto 30px;
-    }
-    .note-add input {
-        line-height: 1em;
-        font-size: 0.8rem;
-    }
-    .icons span {
-        font-size: 0.9rem;
-        margin: 2px;
-    }
-    .add-title {
-        width: 50px;
-        padding: 5px 10px;
-    }
-    .add-lable {
-        width: 35px;
+        flex-direction: column;
+        align-items: center;
     }
 }

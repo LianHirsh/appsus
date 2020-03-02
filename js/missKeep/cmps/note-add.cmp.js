@@ -25,6 +25,7 @@ export default {
         v-model="info"
         @keyup.enter="updateInfo"
         type="text"
+        ref="info"
         autocomplete=off
         :placeholder="[[placeholder]]"
         class="user-info"
@@ -111,5 +112,8 @@ export default {
             const urlParts = url.split('v=');
             return urlParts[urlParts.length - 1];
         }
-    }
+    },
+    mounted() {
+        this.$refs.info.focus();
+    },
 }

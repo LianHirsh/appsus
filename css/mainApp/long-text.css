@@ -1,4 +1,4 @@
-.closeState {
-    height: 20px;
-    overflow: hidden;
+.long-text .txt {
+    display: flex;
+    font-size: 0.9rem;
 }

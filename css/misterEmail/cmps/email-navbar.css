@@ -17,12 +17,13 @@
 .compose {
     border: solid grey 1px;
     border-radius: 50px;
-    padding: 10px 20px;
+    padding: 10px 15px;
     text-align: center;
     margin: 20px;
     width: 150px;
-    font-size: 1.4rem !important;
+    font-size: 1.1rem !important;
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
+    transition: 0.2s;
 }
 
 .compose:hover {
@@ -40,4 +41,52 @@
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     font-weight: bold;
+}
+
+.menu-content {
+    display: none;
+}
+
+@media (max-width: 890px) {
+    .email-screen {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity .3s;
+        z-index: 99;
+    }
+    .email-open-menu-screen {
+        visibility: visible;
+        opacity: 1;
+    }
+    .side-navbar {
+        justify-content: flex-start;
+    }
+    .menu-content {
+        display: flex;
+        position: absolute;
+        top: 215px;
+        left: 0px;
+        align-items: center;
+    }
+    .side-navbar-options {
+        left: 0;
+        top: -20px;
+        padding: 25px;
+        position: fixed;
+        transform: translate(-100%);
+        transition: transform .6s;
+        background-color: rgb(248, 244, 244);
+        height: 100vh;
+    }
+    .email-open-menu {
+        transform: translate(0, 0);
+        z-index: 999;
+    }
 }

@@ -6,18 +6,21 @@
 .sort-by-date {
     padding: 5px 10px;
     font-size: 1rem;
-    border-radius: 10px;
+    border-radius: 4px;
     outline-width: 0;
-    border: 1px solid #506D21;
-    color: #506D21;
-    background-color: white;
     transition: 0.3s;
+    background-color: #506D21;
+    border: 1px solid #506D21;
+    color: white;
+    transition: 0.2s;
+    cursor: pointer;
 }
 
 .sort-by-title:hover,
 .sort-by-date:hover {
-    background-color: #506D21;
-    color: white;
+    background-color: white;
+    color: #506D21;
+    border: 1px solid #506D21;
 }
 
 .sort-title {
