@@ -21,7 +21,8 @@ export default {
             @pin="pinNote" 
             @remove="removeNote"
             @update="updateNote"
-            @changeBkg="changeColorBkg">
+            @changeBkg="changeColorBkg"
+            @complete="completeTodo">
             </note-list>
         </section>
     `,
@@ -83,6 +84,9 @@ export default {
         },
         filterByPinned(isPinned) {
             return this.notes.filter(note => note.isPinned === isPinned);
+        },
+        completeTodo(todoIdx, noteId){
+            noteService.completeTodo(todoIdx, noteId)
         }
     },
     components: {

@@ -13,7 +13,8 @@ export const noteService = {
     changePinnedStatus,
     updateNote,
     changeBkgColor,
-    isPinnedNotes
+    isPinnedNotes,
+    completeTodo
 }
 
 function query(filterBy) {
@@ -34,8 +35,21 @@ function query(filterBy) {
     return Promise.resolve(notes);
 }
 
+function completeTodo(todoIdx, noteId) {
+    const note = _findNote(noteId);
+    const todos = note.info.todos;
+
+    if(todos[todoIdx].doneAt === null) {
+        todos[todoIdx].doneAt = Date.now();
+    } else {
+        todos[todoIdx].doneAt = null;
+    }
+    storageService.store(NOTES_KEY, notesDB);
+    return Promise.resolve();
+}
+
 function updateNote(noteId, info, type) {
-    var note = _findNote(noteId);
+    const note = _findNote(noteId);
     if (type === 'noteText') {
         note.info.text = info;
     } else if (type === 'noteImg') {

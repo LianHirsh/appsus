@@ -41,7 +41,11 @@ export default {
             isEdit: false,
             isColorOpt: false,
             todos: this.info.todos,
-            todosTxt: ''
+            <<
+            << << < HEAD
+            todosTxt: '' ===
+                === = >>>
+                >>> > f7847f917d872f1f819fc95361505c0e04c5be17
         }
     },
     methods: {
@@ -74,9 +78,34 @@ export default {
         changeColor(color) {
             this.$emit('colorChange', color, this.id)
         },
+        <<
+        << << < HEAD ===
+        === =
+        complete(todoIdx) {
+            this.$emit('complete', this.id, todoIdx);
+        },
+        >>>
+        >>> > f7847f917d872f1f819fc95361505c0e04c5be17
         pinNote() {
-            this.$emit('pin', this.id)
+            this.$emit('pin', this.id);
+        },
+        padTime(time) {
+            return (time < 10) ? '0' + time : time;
+        },
+        doneAt(time) {
+            this.doneAt = time;
+            this.doneAtTime;
         }
+    },
+    computed: {
+        // doneAtTime() {
+        //     let time = new Date(this.doneAt);
+        //     const hours = this.padTime(time.getHours());
+        //     const minutes = this.padTime(time.getMinutes());
+        //     time = `${hours}:${minutes}`;
+
+        //     return time;
+        // }
     },
     components: {
         noteColors
