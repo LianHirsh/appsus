@@ -26,3 +26,9 @@
 .sort-title {
     font-size: 1.2rem;
 }
+
+@media (max-width: 800px) {
+    .sort {
+        padding: 20px 0px;
+    }
+}

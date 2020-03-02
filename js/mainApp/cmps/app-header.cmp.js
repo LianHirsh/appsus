@@ -5,13 +5,12 @@ export default {
             <div class="header-container flex space-between align-center container">
                 <router-link class="logo" :to="'/'"> Appsus</router-link>
                 <nav>
-                    <div @click="toggleMenu" class="menu-btn">x</div>
+                    <div @click="toggleMenu" class="menu-btn">
+                        <img src="imgs/menu.png"/>
+                    </div>
                     <div class="main-nav" :class="{'open-menu':isMenuOpen}">
                         <router-link to="/" class="link" exact>
                             Home
-                        </router-link>
-                        <router-link to="/about" class="link" exact>
-                            About
                         </router-link>
                         <router-link to="/noteApp" class="link" exact>
                             MissKeep

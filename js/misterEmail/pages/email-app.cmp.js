@@ -5,11 +5,11 @@ import sortEmails from '../cmps/email-sort.cmp.js';
 export default {
     template: `
         <section class="email-app container">
-            <email-navbar class="sidebar"></email-navbar>
             <filter-emails v-if="listType" class="filter" @filterByRead="filterEmails" 
             @filterByText="filterEmails">
             </filter-emails>
             <sort-emails  v-if="listType" class="sort" @sort="sortEmails"></sort-emails>
+            <email-navbar class="sidebar"></email-navbar>
             <router-view class="main" :listType="listType" :filterBy="filterBy" :sortBy="sortBy"
             @reply="updateEmail" :replyEmail="replyEmail">
             </router-view>

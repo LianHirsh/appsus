@@ -46,4 +46,7 @@
             .filter {
                 margin: auto;
             }
+            .sidebar {
+                margin-bottom: 20px;
+            }
         }

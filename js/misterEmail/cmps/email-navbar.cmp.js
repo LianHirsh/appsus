@@ -6,7 +6,10 @@ export default {
         <div class="email-screen" @click="toggleMenu" :class="{'email-open-menu-screen':isMenuOpen}">
         </div>
         <div class="menu-content">
-            <div @click="toggleMenu">☰</div>
+            <div @click="toggleMenu" class="menu-side-content">
+                <span class="fas fa-bars menu-navbar"></span>
+                <span>Main menu</span>
+            </div>
         </div>
         <div @click="toggleMenu(); openFilter()" class="side-navbar-options" :class="{'email-open-menu':isMenuOpen}">
             <nav class="flex column">

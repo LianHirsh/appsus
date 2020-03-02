@@ -37,7 +37,7 @@
 
 .side-navbar .router-link-active {
     color: #506D21;
-    background-color: rgb(212, 231, 160);
+    background-color: #d4e7a0;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     font-weight: bold;
@@ -68,12 +68,24 @@
     .side-navbar {
         justify-content: flex-start;
     }
+    .menu-side-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 15px;
+        color: #506D21;
+        cursor: pointer;
+    }
+    .menu-navbar {
+        font-size: 3rem;
+        color: #506D21;
+    }
     .menu-content {
         display: flex;
-        position: absolute;
         top: 215px;
         left: 0px;
         align-items: center;
+        justify-content: center;
     }
     .side-navbar-options {
         left: 0;

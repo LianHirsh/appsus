@@ -18,3 +18,10 @@
 .filters {
     font-size: 1rem;
 }
+
+@media (max-width: 800px) {
+    .filter {
+        padding: 0px;
+        padding-top: 20px;
+    }
+}

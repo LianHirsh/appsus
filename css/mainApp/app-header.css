@@ -50,6 +50,12 @@
 
 .menu-btn {
     display: none;
+    background: none;
+}
+
+.menu-btn img {
+    width: 60px;
+    height: 60px;
 }
 
 @media (max-width: 750px) {
