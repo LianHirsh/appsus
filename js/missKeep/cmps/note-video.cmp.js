@@ -4,7 +4,7 @@ export default {
         <section class="note-video">
             <span v-if="isPinned" class="fas fa-thumbtack pinnedNote"></span>
             <div class="note-video-content">
-                <iframe class="video" :title="info.title" :src="'https://www.youtube.com/embed/'+info.urlYouTubeId">
+                <iframe class="video" :title="info.title" :src="'https://www.youtube.com/embed/'+info.urlYouTubeId" frameborder="0" allowfullscreen>
                 </iframe>
             </div>
             <div class="flex space-between">

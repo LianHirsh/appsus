@@ -30,7 +30,7 @@ export default {
                 <div>
                     <button @click="updateNote">Update</button>
                     <button @click="editNote">Cancel</button>
-                <div>
+                </div>
             </section>
             <note-colors v-if="isColorOpt" @colorChange="changeColor"></note-colors>
         </section>

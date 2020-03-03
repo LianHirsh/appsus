@@ -11,7 +11,7 @@ export default {
                 <span>Main menu</span>
             </div>
         </div>
-        <div @click="toggleMenu(); openFilter()" class="side-navbar-options" :class="{'email-open-menu':isMenuOpen}">
+        <div @click="toggleMenu()" class="side-navbar-options" :class="{'email-open-menu':isMenuOpen}">
             <nav class="flex column">
                 <router-link to="/emailApp/compose" class="compose" exact>
                     <span class="fas fa-plus"></span>

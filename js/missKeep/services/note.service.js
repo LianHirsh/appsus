@@ -166,13 +166,33 @@ function _findNote(noteId) {
 }
 
 function _createNotes() {
-    let notes = [{
+    let notes = [
+        {
             type: 'noteText',
             info: {
                 text: 'Fullstack Me Baby!'
             },
             style: {
                 backgroundColor: '#F49097'
+            }
+        },
+        {
+            type: 'noteText',
+            info: {
+                text: 'Real programmers count from 0'
+            },
+            style: {
+                backgroundColor: '#9EE4DA'
+            }
+        },
+        {
+            type: 'noteText',
+            isPinned: true,
+            info: {
+                text: '“Life is like riding a bicycle. To keep your balance, you must keep moving.” —Albert Einstein'
+            },
+            style: {
+                backgroundColor: '#DFB2F4'
             }
         },
         {
@@ -186,13 +206,65 @@ function _createNotes() {
             }
         },
         {
+            type: 'noteImg',
+            isPinned: true,
+            info: {
+                url: 'https://scontent-atl3-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/75483267_159949905230316_6047316408741273115_n.jpg?_nc_ht=scontent-atl3-1.cdninstagram.com&_nc_cat=100&_nc_ohc=Bq3vJy5D1pMAX90lcl2&oh=311633b99843425f1c87e9314f340c37&oe=5E94AD75',
+                title: 'Girls building empires'
+            },
+            style: {
+                backgroundColor: '#F49097'
+            }
+        },
+        {
+            type: 'noteImg',
+            info: {
+                url: 'https://ceoworld.biz/wp-content/uploads/2019/08/Maldives.jpg',
+                title: 'Maldives'
+            },
+            style: {
+                backgroundColor: '#C49E85'
+            }
+        },
+        {
+            type: 'noteImg',
+            info: {
+                url: 'https://d1doqjmisr497k.cloudfront.net/-/media/mccormick-us/recipes/mccormick/u/800/unicorn_cupcakes_800x800.jpg',
+                title: 'Cupcake'
+            },
+            style: {
+                backgroundColor: '#BEA7E5'
+            }
+        },
+        {
             type: 'noteTodos',
             info: {
                 label: 'How was it:',
-                todos: [{ text: 'Do that', doneAt: null }, { text: 'Do this', doneAt: 187111111 }]
+                todos: [{ text: 'Do that', doneAt: null }, { text: 'Do this', doneAt: null }]
             },
             style: {
                 backgroundColor: '#9EE4DA'
+            }
+        },
+        {
+            type: 'noteTodos',
+            info: {
+                label: '',
+                todos: [{ text: 'Eat()', doneAt: null }, { text: 'Sleep()', doneAt: null },{ text: 'Code()', doneAt: null },{ text: 'Repeat()', doneAt: null }]
+            },
+            style: {
+                backgroundColor: '#DFB2F4'
+            }
+        },
+        {
+            type: 'noteTodos',
+            isPinned: true,
+            info: {
+                label: 'Shopping list:',
+                todos: [{ text: '1 Milk', doneAt: null }, { text: '2 Bread', doneAt: null },{ text: '1 Butter', doneAt: null },{ text: '1 Biscuite', doneAt: null }]
+            },
+            style: {
+                backgroundColor: '#FFB17A'
             }
         },
         {
@@ -204,6 +276,16 @@ function _createNotes() {
             style: {
                 backgroundColor: '#80ED99'
             }
+        },
+        {
+            type: 'noteVideo',
+            info: {
+                urlYouTubeId: 'zY-ugO6SCBQ',
+                title: 'My video'
+            },
+            style: {
+                backgroundColor: '#F5E960'
+            }
         }
     ].map(_createNote);
 
@@ -214,7 +296,7 @@ function _createNote(noteDetailes) {
     return {
         id: utilService.makeId(),
         type: noteDetailes.type,
-        isPinned: false,
+        isPinned: noteDetailes.isPinned || false,
         info: noteDetailes.info,
         style: noteDetailes.style || { backgroundColor: '#80ED99' }
     }

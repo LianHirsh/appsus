@@ -66,3 +66,9 @@ textarea[name=body] {
 .remove span {
     font-size: 30px;
 }
+
+@media (max-width: 1200px) {
+    .remove {
+        left: 940px;
+    }
+}
