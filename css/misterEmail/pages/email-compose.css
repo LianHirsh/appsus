@@ -56,19 +56,12 @@ textarea[name=body] {
 .remove {
     background-color: transparent;
     border: none;
-    align-self: flex-start;
     position: relative;
-    left: 900px;
-    bottom: 77px;
+    left: 110px;
+    bottom: 73px;
     cursor: pointer;
 }
 
 .remove span {
-    font-size: 30px;
-}
-
-@media (max-width: 1200px) {
-    .remove {
-        left: 940px;
-    }
+    font-size: 25px;
 }

@@ -20,9 +20,8 @@ export default {
 
                 <button class="send">Send</button>
             </form>
-        </div>
+            </div>
             <button class="remove" @click="removeEmail"><span class="far fa-trash-alt trash"></span></button>
-    
     </section>
     `,
     props: ['replyEmail'],
