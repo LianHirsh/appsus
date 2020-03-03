@@ -213,17 +213,6 @@ function _filterByText(filterBy) {
 
 function _createEmails() {
     let emails = [{
-            from: { name: 'Lian', address: 'lian@gmail.com' },
-            cc: 'ella@gmail.com',
-            subject: 'Thanks for everything!!!!!!',
-            body: `My money's in that office, right?
-            If she start giving me some bullshit about it ain't there, and we got to go someplace else and get it, I'm gonna shoot you in the head then and there. Then I'm gonna shoot that bitch in the kneecaps, find out where my goddamn money is.
-            She gonna tell me too. Hey, look at me when I'm talking to you, motherfucker. You listen: we go in there, and that nigga Winston or anybody else is in there, you the first motherfucker to get shot. You understand?`,
-            sentAt: 1582897777777,
-            isSnoozed: true,
-            isRead: true
-        },
-        {
             from: { name: 'yossi', address: 'yossi@gmail.com' },
             cc: 'dudu@gmail.com',
             subject: 'Hi you!',
@@ -240,15 +229,6 @@ function _createEmails() {
             isStar: true,
             isSnoozed: true,
             isRead: true
-        },
-        {
-            from: { name: 'nini', address: 'nini@gmail.com' },
-            cc: 'shimi@gmail.com',
-            subject: 'GoodJob!!!!!',
-            body: `My money's in that office, right?
-            If she start giving me some bullshit about it ain't there, and we got to go someplace else and get it, I'm gonna shoot you in the head then and there. Then I'm gonna shoot that bitch in the kneecaps, find out where my goddamn money is.
-            She gonna tell me too. Hey, look at me when I'm talking to you, motherfucker. You listen: we go in there, and that nigga Winston or anybody else is in there, you the first motherfucker to get shot. You understand?`,
-            sentAt: 1582892555555
         },
         {
             from: { name: 'may', address: 'may@gmail.com' },
